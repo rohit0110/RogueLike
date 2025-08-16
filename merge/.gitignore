@@ -1,0 +1,27 @@
+# Godot-specific
+.import/                # Import cache (auto-generated, safe to ignore)
+.Godot/
+export_presets.cfg      # Local export settings (contains absolute paths)
+
+# Build outputs
+*.import
+*.translation
+
+# System files
+.DS_Store               # macOS metadata
+Thumbs.db               # Windows metadata
+desktop.ini
+
+# Backup files
+*.tmp
+*.bak
+*.old
+*.swp
+*.swo
+
+# VSCode / JetBrains / Editor-specific
+.vscode/
+.idea/
+
+# Logs
+*.log
