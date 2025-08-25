@@ -1,4 +1,5 @@
 extends CharacterBody2D
+signal hit
 
 @export var speed := 200.0
 @export var jump_force := -400.0

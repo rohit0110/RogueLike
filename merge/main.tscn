@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2h4yf8j5d665"]
+[gd_scene load_steps=19 format=4 uid="uid://d2h4yf8j5d665"]
 
 [ext_resource type="Script" uid="uid://bx1ptepa7wadj" path="res://Player/player.gd" id="1_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://yxbbhgkirlc6" path="res://Assets/Toechondria_Idle_Layer_parts.png" id="2_lquwl"]
-[ext_resource type="Texture2D" uid="uid://deruerhddav6a" path="res://Assets/Toechondria_4F_Jump.png" id="3_7mycd"]
-[ext_resource type="Texture2D" uid="uid://ciib3asibsmxb" path="res://Assets/Toechondria_Walk_SeparateParts.png" id="4_272bh"]
+[ext_resource type="Texture2D" uid="uid://cmqokpqudrrb7" path="res://Assets/Animations/Idle/Toechondria_Idle_Layer_parts.png" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://b7d5xqmj17822" path="res://Assets/Animations/Jump/Toechondria_4F_Jump.png" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://cllonh4e3oopq" path="res://Assets/Animations/Walk/Toechondria_Walk_SeparateParts.png" id="4_272bh"]
+[ext_resource type="Texture2D" uid="uid://b8ni3g4jqg6da" path="res://Assets/Ground_tiles_base.png" id="5_lquwl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("2_lquwl")
@@ -52,7 +53,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -90,24 +91,47 @@ animations = [{
 radius = 14.0
 height = 64.0
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hqtel"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
+texture = ExtResource("5_lquwl")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_272bh"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_7mycd")
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(40, 40)
 script = ExtResource("1_1bvp3")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_bwjto")
-animation = &"walk"
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.284486
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CapsuleShape2D_op7ga")
 
-[node name="Ground" type="StaticBody2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+offset = Vector2(150, 0)
+zoom = Vector2(1.2, 1.2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(6, 325)
-scale = Vector2(10, 10)
-shape = SubResource("WorldBoundaryShape2D_hqtel")
+[node name="Ground" type="TileMapLayer" parent="."]
+use_parent_material = true
+position = Vector2(405, 324)
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAABAAAAAAACAAMAAAAAAAEAAAADAAMAAAABAAEAAAADAAIAAAABAAAAAAAEAAIAAAABAAAAAAAEAAMAAAABAAAAAAAFAAMAAAABAAAAAAAFAAIAAAABAAEAAAAGAAIAAAABAAAAAAAGAAMAAAABAAAAAAAAAAMAAAABAAEAAAABAAMAAAABAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD7/wAAAAABAAAAAAD7/wEAAAABAAAAAAD7/wIAAAABAAAAAAD7/wMAAAABAAAAAAD8/wMAAAABAAAAAAD8/wIAAAABAAAAAAD8/wEAAAABAAAAAAD8/wAAAAABAAEAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAEAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAABAAAAAAAHAAIAAAABAAAAAAAHAAMAAAABAAAAAAAIAAMAAAABAAAAAAAIAAIAAAABAAAAAAAIAAEAAAABAAAAAAAIAAAAAAAAAAAAAAD9/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAABAAEAAAAJAAIAAAABAAAAAAAJAAMAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_272bh")
+use_kinematic_bodies = true
