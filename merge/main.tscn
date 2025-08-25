@@ -114,10 +114,12 @@ script = ExtResource("1_1bvp3")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_bwjto")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.284486
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CapsuleShape2D_op7ga")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx26m8ejujhp8"]
+
+[ext_resource type="Texture2D" uid="uid://cuoqxj008ksdx" path="res://Assets/Toechondria_Walk_SeparateParts_1.png" id="1_tcb8q"]
+
+[node name="default_arm" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="ToechondriaWalkSeparateParts1" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_tcb8q")
+region_enabled = true
+region_rect = Rect2(1384, 2346, 455, 438)
