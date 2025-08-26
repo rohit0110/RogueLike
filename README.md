@@ -1,7 +1,10 @@
-Skeletal structure:
-Start run in a body that was a discarded experiment.
-You are 'programmed' to fight through other chimera's and enemies and harvest their body parts in the hopes of reaching the scientist with the 'perfect' body that the scientist wants for himself
-He pushes a button that makes you lose control of it and you go back to a weaker body
-Alternate endings TBA(To be Added)
-can be added :You find the scientists's wife's body parts and seduce him and then the game becomes a dating simulator
+Folder Usage:
+Have created 2 main folders atm
+Assets: include all pngs and animations we've built.
 
+Scenes: Includes a Body Part Scenes, which should have scenes built for all body parts for swapping mechanism.
+	Further includes a Menu Folder for different menus we'll have. 
+	Level Folder will have all the levels we make for the game.
+	Player folder will be used to call upon the body part scenes required.
+
+Haven't added anything for enemies for now.

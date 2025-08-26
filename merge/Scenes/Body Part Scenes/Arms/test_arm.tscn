@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfony667xs5jm"]
+
+[ext_resource type="Script" uid="uid://fo4kt5vth2k7" path="res://Scenes/Body Part Scenes/Arms/test_arm.gd" id="1_pysri"]
+[ext_resource type="Texture2D" uid="uid://b57g7uysu5r3b" path="res://Assets/CharacterPNGs/Attack/arm attack - no fluff.png" id="2_mcd8l"]
+
+[sub_resource type="Animation" id="Animation_dg762"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_pysri"]
+resource_name = "attack"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.166667, 0.3, 0.433333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oa8rm"]
+_data = {
+&"RESET": SubResource("Animation_dg762"),
+&"attack": SubResource("Animation_pysri")
+}
+
+[node name="TestArm" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_pysri")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_oa8rm")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(7, 7)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_mcd8l")
+hframes = 2
+vframes = 3
