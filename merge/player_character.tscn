@@ -32,7 +32,7 @@ region_enabled = true
 region_rect = Rect2(2534.61, 1270.66, 302.738, 430.56)
 
 [node name="left_arm_slot" type="Node2D" parent="."]
-position = Vector2(470, 171)
+position = Vector2(482, 170)
 
 [node name="LeftLeg" type="Sprite2D" parent="."]
 position = Vector2(485, 274)
@@ -49,5 +49,5 @@ region_enabled = true
 region_rect = Rect2(412.075, 2163.34, 238.364, 202.248)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(496, 201)
+position = Vector2(504, 209)
 shape = SubResource("CapsuleShape2D_0hvvw")

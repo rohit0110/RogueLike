@@ -32,3 +32,6 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("change_arm"):
 		swap_arm("res://BodyParts/Arms/test_arm.tscn")
+	
+	if Input.is_action_just_pressed("attack"):
+		current_arm.play_attack()
