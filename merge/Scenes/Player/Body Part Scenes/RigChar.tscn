@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://di06nabkrplbh"]
+[gd_scene load_steps=9 format=3 uid="uid://di06nabkrplbh"]
 
+[ext_resource type="Script" uid="uid://gatyb7d260ja" path="res://Scenes/Player/Body Part Scenes/RigMove.gd" id="1_6n2hn"]
 [ext_resource type="PackedScene" uid="uid://dm2dnot7xhj2p" path="res://Scenes/Player/Body Part Scenes/RigHead/RigHead.tscn" id="1_hcoe6"]
 [ext_resource type="PackedScene" uid="uid://7mvuqltagalc" path="res://Scenes/Player/Body Part Scenes/RigTorso/RigTorso.tscn" id="2_6n2hn"]
 [ext_resource type="PackedScene" uid="uid://be4nn4uuu1qgo" path="res://Scenes/Player/Body Part Scenes/RigArms/RigLeftArm.tscn" id="3_xpvmu"]
@@ -15,6 +16,7 @@ height = 210.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(417, 362)
+script = ExtResource("1_6n2hn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-6, -1)

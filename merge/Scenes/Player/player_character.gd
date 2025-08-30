@@ -5,7 +5,7 @@ var current_arm : Node2D = null
 @onready var arm_slot = $left_arm_slot
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	swap_arm("res://Scenes/Body Part Scenes/Arms/default_arm.tscn")
+	swap_arm("res://Scenes/Player/Body Part Scenes/Arms/default_arm.tscn")
 
 func swap_arm(arm_path : String):
 	if current_arm:
@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 		position.y -= move_speed_pixels
 		
 	if Input.is_action_just_pressed("change_arm"):
-		swap_arm("res://Scenes/Body Part Scenes/Arms/test_arm.tscn")
+		swap_arm("res://Scenes/Player/Body Part Scenes/Arms/test_arm.tscn")
 	
 	if Input.is_action_just_pressed("attack"):
 		current_arm.play_attack()

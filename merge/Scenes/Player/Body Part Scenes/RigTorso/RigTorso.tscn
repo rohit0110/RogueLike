@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://7mvuqltagalc"]
 
 [ext_resource type="Texture2D" uid="uid://cm4p2kq32imv" path="res://Assets/CharacterPNGs/Walk/ToeChon_TorsoWalk.png" id="1_5nskj"]
-[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Parts.gd" id="1_abidk"]
+[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Part.gd" id="1_abidk"]
 [ext_resource type="Texture2D" uid="uid://c86nir112wrvc" path="res://Assets/CharacterPNGs/Idle/Torso_Idle_ToeChon.png" id="1_pw54b"]
 
 [sub_resource type="Animation" id="Animation_6ttfv"]
