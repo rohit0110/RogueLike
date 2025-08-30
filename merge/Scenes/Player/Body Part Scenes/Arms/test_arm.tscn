@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bfony667xs5jm"]
 
-[ext_resource type="Script" uid="uid://fo4kt5vth2k7" path="res://Scenes/Body Part Scenes/Arms/test_arm.gd" id="1_pysri"]
+[ext_resource type="Script" uid="uid://fo4kt5vth2k7" path="res://Scenes/Player/Body Part Scenes/Arms/test_arm.gd" id="1_pysri"]
 [ext_resource type="Texture2D" uid="uid://b57g7uysu5r3b" path="res://Assets/CharacterPNGs/Attack/arm attack - no fluff.png" id="2_mcd8l"]
 
 [sub_resource type="Animation" id="Animation_dg762"]

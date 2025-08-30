@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cx26m8ejujhp8"]
 
-[ext_resource type="Script" uid="uid://dhjyb4m4qkb7a" path="res://Scenes/Body Part Scenes/Arms/default_arm.gd" id="1_4khfm"]
+[ext_resource type="Script" uid="uid://dhjyb4m4qkb7a" path="res://Scenes/Player/Body Part Scenes/Arms/default_arm.gd" id="1_4khfm"]
 [ext_resource type="Texture2D" uid="uid://cjaehb2js48gx" path="res://Assets/CharacterPNGs/Attack/Toechondria_RightHandAttack_Animation.png" id="2_jklk4"]
 
 [sub_resource type="Animation" id="Animation_4khfm"]
