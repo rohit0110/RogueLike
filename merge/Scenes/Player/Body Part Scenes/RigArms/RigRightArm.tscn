@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://bdbqxexxodb32"]
 
-[ext_resource type="Texture2D" uid="uid://d3vygfle2sjux" path="res://Assets/CharacterPNGs/Idle/Right_Hand_Idle_ToeChon.png" id="1_bpp0d"]
+[ext_resource type="Texture2D" uid="uid://d1lxbclhi4bef" path="res://Assets/CharacterPNGs/Idle/Right_Hand_Idle_ToeChon.png" id="1_bpp0d"]
 [ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Parts.gd" id="1_fiuju"]
-[ext_resource type="Texture2D" uid="uid://bg5dt74uyqkga" path="res://Assets/CharacterPNGs/Walk/ToeChon_RightHandWalk.png" id="1_kli8n"]
+[ext_resource type="Texture2D" uid="uid://dadtick2rccya" path="res://Assets/CharacterPNGs/Walk/ToeChon_RightHandWalk.png" id="1_kli8n"]
 
 [sub_resource type="Animation" id="Animation_fiuju"]
 resource_name = "Idle"

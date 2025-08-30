@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://be4nn4uuu1qgo"]
 
-[ext_resource type="Texture2D" uid="uid://mvmvfg6rbwk0" path="res://Assets/CharacterPNGs/Idle/Left_Hand_Idle_ToeChon.png" id="1_kli8n"]
+[ext_resource type="Texture2D" uid="uid://dmuyy5l600pui" path="res://Assets/CharacterPNGs/Idle/Left_Hand_Idle_ToeChon.png" id="1_kli8n"]
 [ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Parts.gd" id="1_xnnka"]
-[ext_resource type="Texture2D" uid="uid://yr2r30tlt1in" path="res://Assets/CharacterPNGs/Walk/ToeChon_LeftHandWalk.png" id="2_cp83w"]
+[ext_resource type="Texture2D" uid="uid://cg8nlq3tn5leu" path="res://Assets/CharacterPNGs/Walk/ToeChon_LeftHandWalk.png" id="2_cp83w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cp83w"]
 atlas = ExtResource("1_kli8n")
