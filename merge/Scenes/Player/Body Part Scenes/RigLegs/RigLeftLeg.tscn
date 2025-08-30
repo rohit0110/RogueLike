@@ -1,0 +1,126 @@
+[gd_scene load_steps=15 format=3 uid="uid://de1wo850vs1xe"]
+
+[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Parts.gd" id="1_r34lo"]
+[ext_resource type="Texture2D" uid="uid://bhc1227sdftom" path="res://Assets/CharacterPNGs/Idle/Left_Leg_Idle_ToeChon.png" id="1_xdc2s"]
+[ext_resource type="Texture2D" uid="uid://durc1ci2wspuu" path="res://Assets/CharacterPNGs/Walk/ToeChon_LeftLegWalk.png" id="2_qrifa"]
+
+[sub_resource type="Animation" id="Animation_lrrea"]
+resource_name = "IdleState"
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+
+[sub_resource type="Animation" id="Animation_r34lo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+
+[sub_resource type="Animation" id="Animation_qrifa"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Walk"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lrrea"]
+_data = {
+&"IdleState": SubResource("Animation_lrrea"),
+&"RESET": SubResource("Animation_r34lo"),
+&"WalkState": SubResource("Animation_qrifa")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrifa"]
+atlas = ExtResource("1_xdc2s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r34lo"]
+atlas = ExtResource("1_xdc2s")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrrea"]
+atlas = ExtResource("2_qrifa")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dm1h"]
+atlas = ExtResource("2_qrifa")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_expj4"]
+atlas = ExtResource("2_qrifa")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k5md"]
+atlas = ExtResource("2_qrifa")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lrrea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrifa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r34lo")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrrea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dm1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_expj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k5md")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="RigLeftLeg" type="Node2D"]
+script = ExtResource("1_r34lo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lrrea")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_lrrea")
+animation = &"Idle"
+autoplay = "Idle"

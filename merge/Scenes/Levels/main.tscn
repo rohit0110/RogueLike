@@ -1,10 +1,10 @@
 [gd_scene load_steps=20 format=4 uid="uid://d2h4yf8j5d665"]
 
 [ext_resource type="Script" uid="uid://bx1ptepa7wadj" path="res://Scenes/Player/player.gd" id="1_7i1ub"]
-[ext_resource type="Texture2D" uid="uid://bqfhgxi2cypa4" path="res://Assets/CharacterPNGs/Idle/Toechondria_Idle_Layer_parts.png" id="2_w0lsm"]
-[ext_resource type="Texture2D" uid="uid://crh36yed7wp15" path="res://Assets/CharacterPNGs/Jump/Toechondria_4F_Jump.png" id="3_tpkgp"]
-[ext_resource type="Texture2D" uid="uid://codfiquehib7a" path="res://Assets/CharacterPNGs/Walk/Toechondria_Walk_SeparateParts.png" id="4_irfg1"]
-[ext_resource type="Texture2D" uid="uid://df7do42biqcij" path="res://Assets/Level Designs/Ground_tiles_base.png" id="5_5sf7f"]
+[ext_resource type="Texture2D" uid="uid://bib01rfa654ux" path="res://Assets/CharacterPNGs/Idle/Toechondria_Idle_Layer_parts.png" id="2_w0lsm"]
+[ext_resource type="Texture2D" uid="uid://two2v0wr2j8b" path="res://Assets/CharacterPNGs/Jump/Toechondria_4F_Jump.png" id="3_tpkgp"]
+[ext_resource type="Texture2D" uid="uid://d0iotp0a77uv8" path="res://Assets/CharacterPNGs/Walk/Toechondria_Walk_SeparateParts.png" id="4_irfg1"]
+[ext_resource type="Texture2D" uid="uid://c3maugjd51qqm" path="res://Assets/Level Designs/Ground_tiles_base.png" id="5_5sf7f"]
 [ext_resource type="PackedScene" uid="uid://da7urblf8fisc" path="res://Scenes/Enemy/enemy.tscn" id="6_w0lsm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
@@ -119,7 +119,7 @@ position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_bwjto")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.284486
+frame_progress = 0.0668314
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CapsuleShape2D_op7ga")
