@@ -20,7 +20,7 @@ var t: float = 0.0
 
 func _physics_process(delta: float) -> void:
 	# input
-	var dir: float = Input.get_axis("ui_left","ui_right")
+	var dir: float = Input.get_axis("move_left","move_right")
 
 	# horizontal velocity
 	var target: float = dir * speed
