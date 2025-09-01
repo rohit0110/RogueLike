@@ -1,9 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bdbqxexxodb32"]
+[gd_scene load_steps=15 format=3 uid="uid://bdbqxexxodb32"]
 
-[ext_resource type="Texture2D" uid="uid://d3vygfle2sjux" path="res://Assets/CharacterPNGs/Idle/Right_Hand_Idle_ToeChon.png" id="1_bpp0d"]
-[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Part.gd" id="1_fiuju"]
-[ext_resource type="Texture2D" uid="uid://bg5dt74uyqkga" path="res://Assets/CharacterPNGs/Walk/ToeChon_RightHandWalk.png" id="1_kli8n"]
-[ext_resource type="Texture2D" uid="uid://cjaehb2js48gx" path="res://Assets/CharacterPNGs/Attack/Toechondria_RightHandAttack_Animation.png" id="4_s6vtg"]
+[ext_resource type="Texture2D" uid="uid://d1lxbclhi4bef" path="res://Assets/CharacterPNGs/Idle/Right_Hand_Idle_ToeChon.png" id="1_bpp0d"]
+[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Parts.gd" id="1_fiuju"]
+[ext_resource type="Texture2D" uid="uid://dadtick2rccya" path="res://Assets/CharacterPNGs/Walk/ToeChon_RightHandWalk.png" id="1_kli8n"]
 
 [sub_resource type="Animation" id="Animation_fiuju"]
 resource_name = "Idle"
@@ -85,30 +84,6 @@ region = Rect2(128, 0, 64, 64)
 atlas = ExtResource("1_kli8n")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ne7qa"]
-atlas = ExtResource("4_s6vtg")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hgxyj"]
-atlas = ExtResource("4_s6vtg")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1dxhn"]
-atlas = ExtResource("4_s6vtg")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ch5hc"]
-atlas = ExtResource("4_s6vtg")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ac0li"]
-atlas = ExtResource("4_s6vtg")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ijsis"]
-atlas = ExtResource("4_s6vtg")
-region = Rect2(64, 128, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ne7qa"]
 animations = [{
 "frames": [{
@@ -137,29 +112,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ne7qa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hgxyj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1dxhn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ch5hc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ac0li")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ijsis")
-}],
-"loop": true,
-"name": &"attack",
 "speed": 5.0
 }]
 

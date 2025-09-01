@@ -8,7 +8,7 @@ signal hit
 var is_jumping := false
 
 func _ready() -> void:
-	 #Ensure jump animation does not loop
+	# Ensure jump animation does not loop
 	if $AnimatedSprite2D.sprite_frames.has_animation("jump"):
 		$AnimatedSprite2D.sprite_frames.set_animation_loop("jump", false)
 
