@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://b24mlhsofie3h"]
 
-[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Part.gd" id="1_1lvt0"]
+[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Parts.gd" id="1_1lvt0"]
 [ext_resource type="Texture2D" uid="uid://cj3dvyhosq181" path="res://Assets/CharacterPNGs/Idle/RIght_Leg_Idle_ToeChon.png" id="1_88iti"]
 [ext_resource type="Texture2D" uid="uid://cb5o0alht4dfb" path="res://Assets/CharacterPNGs/Walk/ToeChon_RightLegWalk.png" id="2_1fpij"]
 

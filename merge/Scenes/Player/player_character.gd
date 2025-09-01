@@ -8,13 +8,13 @@ var current_left_leg : Node2D = null
 var current_torso : Node2D = null
 var current_right_leg : Node2D = null
 
-@onready var left_arm_slot = $RigLeftArm
-@onready var head_slot = $RigHead
-@onready var right_arm_slot = $RigRightArm
-@onready var left_leg_slot = $RigLeftLeg
-@onready var torso_slot = $RigTorso
-@onready var right_leg_slot = $RigRightLeg
 
+@onready var left_arm_slot = $LeftArm
+@onready var head_slot = $Head
+@onready var right_arm_slot = $RightArm
+@onready var left_leg_slot = $LeftLeg
+@onready var torso_slot = $Torso
+@onready var right_leg_slot = $RightLeg
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	swap_left_arm("res://Scenes/Player/Body Part Scenes/RigArms/RigLeftArm.tscn")
