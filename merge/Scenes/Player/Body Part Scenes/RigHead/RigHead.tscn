@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dm2dnot7xhj2p"]
 
-[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Parts.gd" id="1_2ems0"]
+[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Part.gd" id="1_2ems0"]
 [ext_resource type="Texture2D" uid="uid://rky3cd1xrbrf" path="res://Assets/CharacterPNGs/Idle/Head_Idle_ToeChon.png" id="1_va3vb"]
 [ext_resource type="Texture2D" uid="uid://cxw408kuemxed" path="res://Assets/CharacterPNGs/Walk/ToeChon_HeadWalk.png" id="2_775i1"]
 
@@ -128,3 +128,4 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1j4qc")
 animation = &"Idle"
 autoplay = "Idle"
+speed_scale = 0.5

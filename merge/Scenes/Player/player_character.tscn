@@ -1,6 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0ru4fshq8rf1"]
+
+[gd_scene load_steps=9 format=3 uid="uid://c0ru4fshq8rf1"]
 
 [ext_resource type="Script" uid="uid://3tljth7bxq3r" path="res://Scenes/Player/player_character.gd" id="1_cnrop"]
+[ext_resource type="PackedScene" uid="uid://de1wo850vs1xe" path="res://Scenes/Player/Body Part Scenes/RigLegs/RigLeftLeg.tscn" id="2_hplj0"]
+[ext_resource type="PackedScene" uid="uid://b24mlhsofie3h" path="res://Scenes/Player/Body Part Scenes/RigLegs/RigRightLeg.tscn" id="3_0aovh"]
+[ext_resource type="PackedScene" uid="uid://dm2dnot7xhj2p" path="res://Scenes/Player/Body Part Scenes/RigHead/RigHead.tscn" id="4_fhr3q"]
+[ext_resource type="PackedScene" uid="uid://be4nn4uuu1qgo" path="res://Scenes/Player/Body Part Scenes/RigArms/RigLeftArm.tscn" id="5_asof1"]
+[ext_resource type="PackedScene" uid="uid://bdbqxexxodb32" path="res://Scenes/Player/Body Part Scenes/RigArms/RigRightArm.tscn" id="6_bjb0i"]
+[ext_resource type="PackedScene" uid="uid://7mvuqltagalc" path="res://Scenes/Player/Body Part Scenes/RigTorso/RigTorso.tscn" id="7_6e1h8"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hvvw"]
 radius = 47.0
@@ -8,6 +16,7 @@ height = 230.0
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_cnrop")
+
 
 [node name="RightLeg" type="Node2D" parent="."]
 position = Vector2(537, 250)
@@ -35,3 +44,15 @@ scale = Vector2(0.25, 0.25)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(504, 209)
 shape = SubResource("CapsuleShape2D_0hvvw")
+
+[node name="RigLeftLeg" parent="." instance=ExtResource("2_hplj0")]
+
+[node name="RigRightLeg" parent="." instance=ExtResource("3_0aovh")]
+
+[node name="RigHead" parent="." instance=ExtResource("4_fhr3q")]
+
+[node name="RigLeftArm" parent="." instance=ExtResource("5_asof1")]
+
+[node name="RigRightArm" parent="." instance=ExtResource("6_bjb0i")]
+
+[node name="RigTorso" parent="." instance=ExtResource("7_6e1h8")]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://be4nn4uuu1qgo"]
+[gd_scene load_steps=22 format=3 uid="uid://be4nn4uuu1qgo"]
 
-[ext_resource type="Texture2D" uid="uid://dmuyy5l600pui" path="res://Assets/CharacterPNGs/Idle/Left_Hand_Idle_ToeChon.png" id="1_kli8n"]
-[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Parts.gd" id="1_xnnka"]
-[ext_resource type="Texture2D" uid="uid://cg8nlq3tn5leu" path="res://Assets/CharacterPNGs/Walk/ToeChon_LeftHandWalk.png" id="2_cp83w"]
+[ext_resource type="Texture2D" uid="uid://mvmvfg6rbwk0" path="res://Assets/CharacterPNGs/Idle/Left_Hand_Idle_ToeChon.png" id="1_kli8n"]
+[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Part.gd" id="1_xnnka"]
+[ext_resource type="Texture2D" uid="uid://yr2r30tlt1in" path="res://Assets/CharacterPNGs/Walk/ToeChon_LeftHandWalk.png" id="2_cp83w"]
+[ext_resource type="Texture2D" uid="uid://cjaehb2js48gx" path="res://Assets/CharacterPNGs/Attack/Toechondria_RightHandAttack_Animation.png" id="4_5gvrm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cp83w"]
 atlas = ExtResource("1_kli8n")
@@ -27,6 +28,30 @@ region = Rect2(0, 64, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1eh3"]
 atlas = ExtResource("2_cp83w")
 region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlcxd"]
+atlas = ExtResource("4_5gvrm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bbp1"]
+atlas = ExtResource("4_5gvrm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvcit"]
+atlas = ExtResource("4_5gvrm")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocwu0"]
+atlas = ExtResource("4_5gvrm")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd1fa"]
+atlas = ExtResource("4_5gvrm")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u83tr"]
+atlas = ExtResource("4_5gvrm")
+region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5gvrm"]
 animations = [{
@@ -56,6 +81,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlcxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bbp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvcit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocwu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bd1fa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u83tr")
+}],
+"loop": true,
+"name": &"attack",
 "speed": 5.0
 }]
 

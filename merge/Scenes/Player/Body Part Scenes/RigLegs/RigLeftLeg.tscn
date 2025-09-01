@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://de1wo850vs1xe"]
 
-[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Parts.gd" id="1_r34lo"]
-[ext_resource type="Texture2D" uid="uid://c0grvfq07xj21" path="res://Assets/CharacterPNGs/Idle/Left_Leg_Idle_ToeChon.png" id="1_xdc2s"]
-[ext_resource type="Texture2D" uid="uid://c47k1n6m0cr8k" path="res://Assets/CharacterPNGs/Walk/ToeChon_LeftLegWalk.png" id="2_qrifa"]
+[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Part.gd" id="1_r34lo"]
+[ext_resource type="Texture2D" uid="uid://bhc1227sdftom" path="res://Assets/CharacterPNGs/Idle/Left_Leg_Idle_ToeChon.png" id="1_xdc2s"]
+[ext_resource type="Texture2D" uid="uid://durc1ci2wspuu" path="res://Assets/CharacterPNGs/Walk/ToeChon_LeftLegWalk.png" id="2_qrifa"]
 
 [sub_resource type="Animation" id="Animation_lrrea"]
 resource_name = "IdleState"
