@@ -1,130 +1,71 @@
-[gd_scene load_steps=15 format=3 uid="uid://dm2dnot7xhj2p"]
+[gd_scene load_steps=6 format=3 uid="uid://dm2dnot7xhj2p"]
 
-[ext_resource type="Script" uid="uid://8fkvoa3y7o4s" path="res://Scenes/Player/Body Part Scenes/Parts.gd" id="1_2ems0"]
-[ext_resource type="Texture2D" uid="uid://rky3cd1xrbrf" path="res://Assets/CharacterPNGs/Idle/Head_Idle_ToeChon.png" id="1_va3vb"]
-[ext_resource type="Texture2D" uid="uid://cxw408kuemxed" path="res://Assets/CharacterPNGs/Walk/ToeChon_HeadWalk.png" id="2_775i1"]
-
-[sub_resource type="Animation" id="Animation_775i1"]
-resource_name = "IdleState"
-loop_mode = 1
-step = 0.0833
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
-}
+[ext_resource type="Texture2D" uid="uid://4ek38glerin3" path="res://Assets/CharacterPNGs/Body Parts/Head/toechondria_head_spritesheet.png" id="1_va3vb"]
 
 [sub_resource type="Animation" id="Animation_2ems0"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Idle"]
+"values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_1j4qc"]
-resource_name = "WalkState"
+[sub_resource type="Animation" id="Animation_775i1"]
+length = 0.5
 loop_mode = 1
-step = 0.0833
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.0333333, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"Walk"]
+"values": [0, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1j4qc"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.266667, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 4, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1j4qc"]
 _data = {
-&"IdleState": SubResource("Animation_775i1"),
 &"RESET": SubResource("Animation_2ems0"),
-&"WalkState": SubResource("Animation_1j4qc")
+&"idle": SubResource("Animation_775i1"),
+&"walk": SubResource("Animation_1j4qc")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_775i1"]
-atlas = ExtResource("1_va3vb")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ems0"]
-atlas = ExtResource("1_va3vb")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1j4qc"]
-atlas = ExtResource("2_775i1")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o2bq5"]
-atlas = ExtResource("2_775i1")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vxhvf"]
-atlas = ExtResource("2_775i1")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvjg4"]
-atlas = ExtResource("2_775i1")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1j4qc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_775i1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2ems0")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1j4qc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o2bq5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vxhvf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nvjg4")
-}],
-"loop": true,
-"name": &"Walk",
-"speed": 5.0
-}]
-
 [node name="RigHead" type="Node2D"]
-script = ExtResource("1_2ems0")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_va3vb")
+hframes = 3
+vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_1j4qc")
 }
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_1j4qc")
-animation = &"Idle"
-autoplay = "Idle"
