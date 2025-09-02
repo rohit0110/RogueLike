@@ -11,7 +11,9 @@ Node2D (Body Part Root)
 ├── AnimationPlayer
 └── AnimationTree
 ```
+Tool for aggregating spritesheet: https://codeshack.io/images-sprite-sheet-generator
 
+Generally, add idle, walk, and attack [if needed] animations in that order.
 
 #### Arms
 **Required animations:**
