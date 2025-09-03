@@ -97,6 +97,7 @@ func _on_direction_timer_timeout() -> void:
 		random_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 
 func update_animation() -> void:
+	# Set animation based on velocity (walk/idle/jump)
 	if is_on_floor():
 		if abs(velocity.x) > 10:
 			animated_sprite.play("walk")
@@ -105,9 +106,19 @@ func update_animation() -> void:
 	else:
 		animated_sprite.play("jump")
 
-	if velocity.x != 0:
-		animated_sprite.flip_h = velocity.x < 0
-		detection_zone.scale.x = sign(velocity.x)
+	# Set direction based on player position (if chasing) or velocity (if wandering)
+	if is_chasing and player:
+		var vector_to_player = player.global_position - global_position
+		# Only flip if the player is meaningfully to the left or right
+		if abs(vector_to_player.x) > 1.0:
+			var direction = sign(vector_to_player.x)
+			animated_sprite.flip_h = direction < 0
+			detection_zone.scale.x = direction
+	elif velocity.x != 0:
+		# Fallback to velocity for non-chasing movement
+		var direction = sign(velocity.x)
+		animated_sprite.flip_h = direction < 0
+		detection_zone.scale.x = direction
 
 func _on_chase_timer_timeout() -> void:
 	is_chasing = false
