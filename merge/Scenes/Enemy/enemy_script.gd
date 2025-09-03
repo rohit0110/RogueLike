@@ -17,6 +17,7 @@ var player_is_visible: bool = false
 @onready var obstacle_detector: RayCast2D = $ObstacleDetector
 @onready var detection_zone: Area2D = $DetectionZone
 @onready var chase_timer: Timer = $ChaseTimer
+@onready var unstuck_cooldown: Timer = $UnstuckCooldown
 
 func _ready() -> void:
 	# Find the player node. This assumes your main scene is named "Main"
@@ -51,23 +52,34 @@ func _physics_process(delta: float) -> void:
 		chase_timer.start()
 	# -------------------
 
-	# --- Movement Logic ---
-	if is_chasing and player:
-		var vector_to_player = player.global_position - global_position
-		if abs(vector_to_player.x) > STOPPING_DISTANCE:
-			velocity.x = sign(vector_to_player.x) * speed
+	# --- Movement & AI Decision Logic ---
+	if unstuck_cooldown.is_stopped(): # Only process AI if not in the unstuck hop
+		# --- Horizontal Movement ---
+		if is_chasing and player:
+			var vector_to_player = player.global_position - global_position
+			
+			# Condition 1: On same level and close enough to stop.
+			if abs(vector_to_player.y) < 50 and abs(vector_to_player.x) < STOPPING_DISTANCE:
+				velocity.x = 0
+			# Condition 2: Stuck on top of the player. Hop only triggers if on a surface.
+			elif abs(vector_to_player.y) > 50 and abs(vector_to_player.x) < 5.0 and is_on_floor():
+				velocity.x = [speed, -speed][randi() % 2] # Hop randomly left or right
+				velocity.y = jump_force
+				unstuck_cooldown.start() # Disable AI for a moment
+			# Condition 3: Normal chase.
+			else:
+				velocity.x = sign(vector_to_player.x) * speed
 		else:
-			velocity.x = 0
-	else:
-		velocity.x = random_direction.x * random_speed
+			# Condition 4: Wander.
+			velocity.x = random_direction.x * random_speed
+		
+		# --- Obstacle Jump Logic ---
+		if is_chasing and player and velocity.x != 0:
+			obstacle_detector.target_position.x = sign(velocity.x) * 20
+			obstacle_detector.force_raycast_update()
+			if is_on_floor() and obstacle_detector.is_colliding():
+				velocity.y = jump_force
 	# -------------------
-	
-	# Obstacle detection and jump logic
-	if is_chasing and player and velocity.x != 0:
-		obstacle_detector.target_position.x = sign(velocity.x) * 20
-		obstacle_detector.force_raycast_update()
-		if is_on_floor() and obstacle_detector.is_colliding():
-			velocity.y = jump_force
 
 	move_and_slide()
 	update_animation()

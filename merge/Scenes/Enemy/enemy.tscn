@@ -117,6 +117,10 @@ target_position = Vector2(20, 0)
 wait_time = 3.0
 one_shot = true
 
+[node name="UnstuckCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [node name="DetectionZone" type="Area2D" parent="."]
 scale = Vector2(1.21618, 2.09953)
 
