@@ -138,3 +138,5 @@ tree_root = SubResource("AnimationNodeStateMachine_d1eh3")
 anim_player = NodePath("../AnimationPlayer")
 parameters/attack/blend_position = 0
 parameters/movement/blend_position = 0
+
+[node name="BulletStartPosition" type="Marker2D" parent="."]

@@ -134,3 +134,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_hk8mb")
 anim_player = NodePath("../AnimationPlayer")
 parameters/movement/blend_position = 0
+
+[node name="BulletStartPosition" type="Marker2D" parent="."]
+position = Vector2(44, -57)
+
+[connection signal="shoot" from="." to="." method="_on_shoot"]

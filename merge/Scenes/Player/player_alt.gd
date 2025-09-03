@@ -1,6 +1,7 @@
 @tool
 extends CharacterBody2D
 
+
 var move_speed_pixels : int = 10
 var current_left_arm : Node2D = null
 var current_right_arm : Node2D = null
@@ -68,9 +69,11 @@ func swap_right_leg(leg_path: String):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("move_right"):
+		$".".scale.x = 1
 		position.x += move_speed_pixels
 	
 	if Input.is_action_pressed("move_left"):
+		$".".scale.x = -1
 		position.x -= move_speed_pixels
 		
 	if Input.is_action_pressed("move_down"):
