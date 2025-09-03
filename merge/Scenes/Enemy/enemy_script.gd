@@ -7,6 +7,7 @@ const random_speed = 40
 const gravity = 900.0
 const jump_force = -400.0
 const STOPPING_DISTANCE = 28.0 * 2 # Player width (28) + margin
+const TOO_CLOSE_DISTANCE = 28.0 * 1.5 # Don't let the player get closer than this
 
 var is_chasing: bool = false
 var player: CharacterBody2D = null
@@ -53,24 +54,36 @@ func _physics_process(delta: float) -> void:
 	# -------------------
 
 	# --- Movement & AI Decision Logic ---
-	if unstuck_cooldown.is_stopped(): # Only process AI if not in the unstuck hop
+	if unstuck_cooldown.is_stopped(): # Only process AI if not in a cooldown state
 		# --- Horizontal Movement ---
 		if is_chasing and player:
 			var vector_to_player = player.global_position - global_position
-			
-			# Condition 1: On same level and close enough to stop.
-			if abs(vector_to_player.y) < 50 and abs(vector_to_player.x) < STOPPING_DISTANCE:
-				velocity.x = 0
-			# Condition 2: Stuck on top of the player. Hop only triggers if on a surface.
-			elif abs(vector_to_player.y) > 50 and abs(vector_to_player.x) < 5.0 and is_on_floor():
-				velocity.x = [speed, -speed][randi() % 2] # Hop randomly left or right
-				velocity.y = jump_force
-				unstuck_cooldown.start() # Disable AI for a moment
-			# Condition 3: Normal chase.
-			else:
-				velocity.x = sign(vector_to_player.x) * speed
+			var x_dist = abs(vector_to_player.x)
+			var y_dist = abs(vector_to_player.y)
+
+			# --- Verticality Check ---
+			if y_dist < 50: # On the same level
+				# 1a: Player is too close, perform a retreat hop.
+				if x_dist < TOO_CLOSE_DISTANCE and is_on_floor():
+					velocity.x = -sign(vector_to_player.x) * speed # Hop away
+					velocity.y = jump_force
+					unstuck_cooldown.start()
+				# 1b: Player is in the sweet spot, stop.
+				elif x_dist < STOPPING_DISTANCE:
+					velocity.x = 0
+				# 1c: Player is too far, move closer.
+				else:
+					velocity.x = sign(vector_to_player.x) * speed
+			else: # On a different level
+				# Stuck on top check
+				if x_dist < 5.0 and is_on_floor():
+					velocity.x = [speed, -speed][randi() % 2]
+					velocity.y = jump_force
+					unstuck_cooldown.start()
+				# Normal chase
+				else:
+					velocity.x = sign(vector_to_player.x) * speed
 		else:
-			# Condition 4: Wander.
 			velocity.x = random_direction.x * random_speed
 		
 		# --- Obstacle Jump Logic ---
