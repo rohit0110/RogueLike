@@ -11,9 +11,12 @@ const STOPPING_DISTANCE = 28.0 * 2 # Player width (28) + margin
 var is_chasing: bool = false
 var player: CharacterBody2D = null
 var random_direction: Vector2 = Vector2.ZERO
+var player_is_visible: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var obstacle_detector: RayCast2D = $ObstacleDetector
+@onready var detection_zone: Area2D = $DetectionZone
+@onready var chase_timer: Timer = $ChaseTimer
 
 func _ready() -> void:
 	# Find the player node. This assumes your main scene is named "Main"
@@ -37,6 +40,18 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
+	# --- AI State Logic ---
+	var was_visible = player_is_visible
+	player_is_visible = _is_player_in_los()
+
+	if player_is_visible:
+		is_chasing = true
+		chase_timer.stop()
+	elif was_visible and not player_is_visible: # If player was just lost
+		chase_timer.start()
+	# -------------------
+
+	# --- Movement Logic ---
 	if is_chasing and player:
 		var vector_to_player = player.global_position - global_position
 		if abs(vector_to_player.x) > STOPPING_DISTANCE:
@@ -45,17 +60,36 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0
 	else:
 		velocity.x = random_direction.x * random_speed
+	# -------------------
 	
 	# Obstacle detection and jump logic
 	if is_chasing and player and velocity.x != 0:
 		obstacle_detector.target_position.x = sign(velocity.x) * 20
 		obstacle_detector.force_raycast_update()
 		if is_on_floor() and obstacle_detector.is_colliding():
-			if player.global_position.y < global_position.y - 10: # Jump if player is above
-				velocity.y = jump_force
+			velocity.y = jump_force
 
 	move_and_slide()
 	update_animation()
+
+func _is_player_in_los() -> bool:
+	if not player:
+		return false
+
+	# 1. Check if player is inside the vision cone shape
+	var bodies_in_cone = detection_zone.get_overlapping_bodies()
+	if not player in bodies_in_cone:
+		return false
+
+	# 2. Raycast to check for obstacles
+	var space_state = get_world_2d().direct_space_state
+	# Exclude the enemy and the player from the raycast, so we only hit walls
+	var exclude_list = [self, player]
+	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position, 1, exclude_list)
+	var result = space_state.intersect_ray(query)
+
+	# If the result is empty, it means the ray didn't hit any obstacles. Line of sight is clear.
+	return result.is_empty()
 
 func _on_direction_timer_timeout() -> void:
 	# Generate a new random direction
@@ -73,11 +107,7 @@ func update_animation() -> void:
 
 	if velocity.x != 0:
 		animated_sprite.flip_h = velocity.x < 0
+		detection_zone.scale.x = sign(velocity.x)
 
-func _on_detection_zone_body_entered(body: Node) -> void:
-	if body == player:
-		is_chasing = true
-
-func _on_detection_zone_body_exited(body: Node) -> void:
-	if body == player:
-		is_chasing = false
+func _on_chase_timer_timeout() -> void:
+	is_chasing = false
