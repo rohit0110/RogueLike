@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://da7urblf8fisc"]
+[gd_scene load_steps=17 format=3 uid="uid://da7urblf8fisc"]
 
 [ext_resource type="Script" uid="uid://cmakb68ofbf8l" path="res://Scenes/Enemy/enemy_script.gd" id="1_iifgy"]
 [ext_resource type="Texture2D" uid="uid://d3mkq3sv5v3kf" path="res://Assets/Animations/Idle/Toechondria_Idle_Layer_parts.png" id="2_epg4t"]
@@ -97,9 +97,6 @@ animations = [{
 radius = 13.0
 height = 66.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_aggro"]
-radius = 260.031
-
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_iifgy")
 metadata/_edit_group_ = true
@@ -116,12 +113,25 @@ target_position = Vector2(20, 0)
 
 [node name="DirectionTimer" type="Timer" parent="."]
 
-[node name="DetectionZone" type="Area2D" parent="."]
-collision_layer = 0
+[node name="ChaseTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
-shape = SubResource("CircleShape2D_aggro")
+[node name="UnstuckCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="RetreatDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DetectionZone" type="Area2D" parent="."]
+scale = Vector2(1.21618, 2.09953)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectionZone"]
+position = Vector2(-51.8014, -2.38148)
+scale = Vector2(1.01361, 0.659708)
+polygon = PackedVector2Array(10, -30, 10, 30, 90, 30, 330, 70, 330, -70, 90, -30)
+metadata/_edit_group_ = true
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
-[connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
-[connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]
+[connection signal="timeout" from="ChaseTimer" to="." method="_on_chase_timer_timeout"]
+[connection signal="timeout" from="RetreatDelayTimer" to="." method="_on_retreat_delay_timer_timeout"]
