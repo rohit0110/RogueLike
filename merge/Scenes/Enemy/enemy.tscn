@@ -120,6 +120,9 @@ one_shot = true
 [node name="UnstuckCooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="RetreatDelayTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="DetectionZone" type="Area2D" parent="."]
 scale = Vector2(1.21618, 2.09953)
 
@@ -131,3 +134,4 @@ metadata/_edit_group_ = true
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="timeout" from="ChaseTimer" to="." method="_on_chase_timer_timeout"]
+[connection signal="timeout" from="RetreatDelayTimer" to="." method="_on_retreat_delay_timer_timeout"]

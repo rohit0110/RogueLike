@@ -19,6 +19,7 @@ var player_is_visible: bool = false
 @onready var detection_zone: Area2D = $DetectionZone
 @onready var chase_timer: Timer = $ChaseTimer
 @onready var unstuck_cooldown: Timer = $UnstuckCooldown
+@onready var retreat_timer: Timer = $RetreatDelayTimer
 
 func _ready() -> void:
 	# Find the player node. This assumes your main scene is named "Main"
@@ -30,6 +31,10 @@ func _ready() -> void:
 	# Configure and start the timer for random movement
 	$DirectionTimer.wait_time = 2 # Change direction every 2 seconds
 	$DirectionTimer.start()
+
+	retreat_timer.wait_time = 1 # 1 seconds
+	retreat_timer.one_shot = true
+
 	
 	# Initial random direction
 	_on_direction_timer_timeout()
@@ -63,20 +68,25 @@ func _physics_process(delta: float) -> void:
 
 			# --- Verticality Check ---
 			if y_dist < 50: # On the same level
-				# 1a: Player is too close, perform a retreat hop.
+				# 1a: Player is too close, start retreat timer.
 				if x_dist < TOO_CLOSE_DISTANCE and is_on_floor():
-					velocity.x = -sign(vector_to_player.x) * speed # Hop away
-					velocity.y = jump_force
-					unstuck_cooldown.start()
+					if retreat_timer.is_stopped():
+						retreat_timer.start()
 				# 1b: Player is in the sweet spot, stop.
 				elif x_dist < STOPPING_DISTANCE:
+				# Player backed away, cancel the retreat timer
+					if not retreat_timer.is_stopped():
+						retreat_timer.stop()
 					velocity.x = 0
 				# 1c: Player is too far, move closer.
 				else:
+					# Player backed away, cancel the retreat timer
+					if not retreat_timer.is_stopped():
+						retreat_timer.stop()
 					velocity.x = sign(vector_to_player.x) * speed
 			else: # On a different level
-				# Stuck on top check
-				if x_dist < 5.0 and is_on_floor():
+				# Stuck on top check: Jump if player is standing on a platform right above.
+				if player.is_on_floor() and x_dist < 5.0 and is_on_floor():
 					velocity.x = [speed, -speed][randi() % 2]
 					velocity.y = jump_force
 					unstuck_cooldown.start()
@@ -147,3 +157,17 @@ func update_animation() -> void:
 
 func _on_chase_timer_timeout() -> void:
 	is_chasing = false
+
+func _on_retreat_delay_timer_timeout() -> void:
+	# Before hopping, double-check if the player is still too close.
+	# This prevents hopping if the player moved away while the timer was ticking.
+	if player and is_on_floor():
+		var vector_to_player = player.global_position - global_position
+		if abs(vector_to_player.x) < TOO_CLOSE_DISTANCE:
+			_execute_retreat_hop()
+
+func _execute_retreat_hop() -> void:
+	var vector_to_player = player.global_position - global_position
+	velocity.x = -sign(vector_to_player.x) * speed # Hop away
+	velocity.y = jump_force
+	unstuck_cooldown.start()
