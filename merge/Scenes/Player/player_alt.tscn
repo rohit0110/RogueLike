@@ -25,3 +25,5 @@ position = Vector2(58, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ckaed")
+
+[connection signal="shoot" from="RightArm/RigRightArm" to="RightArm/RigRightArm" method="_on_shoot"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://da7urblf8fisc"]
+[gd_scene load_steps=18 format=3 uid="uid://da7urblf8fisc"]
 
 [ext_resource type="Script" uid="uid://cmakb68ofbf8l" path="res://Scenes/Enemy/enemy_script.gd" id="1_iifgy"]
-[ext_resource type="Texture2D" uid="uid://c6reilu45j31c" path="res://Assets/CharacterPNGs/Idle/Toechondria_Idle_Layer_parts.png" id="2_epg4t"]
-[ext_resource type="Texture2D" uid="uid://bwy8dl8qel4iu" path="res://Assets/CharacterPNGs/Jump/Toechondria_4F_Jump.png" id="3_3yqyl"]
-[ext_resource type="Texture2D" uid="uid://d16yuuo8l71nq" path="res://Assets/CharacterPNGs/Walk/Toechondria_Walk_SeparateParts.png" id="4_wujgv"]
+[ext_resource type="Texture2D" uid="uid://bib01rfa654ux" path="res://Assets/CharacterPNGs/Idle/Toechondria_Idle_Layer_parts.png" id="2_epg4t"]
+[ext_resource type="Texture2D" uid="uid://two2v0wr2j8b" path="res://Assets/CharacterPNGs/Jump/Toechondria_4F_Jump.png" id="3_3yqyl"]
+[ext_resource type="Texture2D" uid="uid://d0iotp0a77uv8" path="res://Assets/CharacterPNGs/Walk/Toechondria_Walk_SeparateParts.png" id="4_wujgv"]
+[ext_resource type="PackedScene" uid="uid://cwn25miwo2y2h" path="res://Scenes/HUD/HealthBarEnemy.tscn" id="5_d40jh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hb8ge"]
 atlas = ExtResource("2_epg4t")
@@ -131,6 +132,12 @@ position = Vector2(-51.8014, -2.38148)
 scale = Vector2(1.01361, 0.659708)
 polygon = PackedVector2Array(10, -30, 10, 30, 90, 30, 330, 70, 330, -70, 90, -30)
 metadata/_edit_group_ = true
+
+[node name="HealthBar" parent="." instance=ExtResource("5_d40jh")]
+offset_left = -17.0
+offset_top = -41.0
+offset_right = 16.0
+offset_bottom = -36.0
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="timeout" from="ChaseTimer" to="." method="_on_chase_timer_timeout"]

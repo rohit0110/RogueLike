@@ -16,7 +16,7 @@ func _on_Level1_pressed() -> void:
 
 
 func _on_attack_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Player/player_character.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Player/player_alt.tscn")
 
 
 func _on_exit_pressed() -> void:

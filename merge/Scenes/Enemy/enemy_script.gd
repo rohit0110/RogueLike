@@ -20,6 +20,7 @@ var player_is_visible: bool = false
 @onready var chase_timer: Timer = $ChaseTimer
 @onready var unstuck_cooldown: Timer = $UnstuckCooldown
 @onready var retreat_timer: Timer = $RetreatDelayTimer
+@onready var health_bar = $HealthBar
 
 func _ready() -> void:
 	# Find the player node. This assumes your main scene is named "Main"
@@ -41,6 +42,10 @@ func _ready() -> void:
 
 	if animated_sprite.sprite_frames.has_animation("jump"):
 		animated_sprite.sprite_frames.set_animation_loop("jump", false)
+		
+	#HPBar
+	health_bar.init_health(5)
+	
 
 func _physics_process(delta: float) -> void:
 	# Add gravity
