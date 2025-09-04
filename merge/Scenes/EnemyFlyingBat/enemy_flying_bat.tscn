@@ -54,5 +54,14 @@ shape = SubResource("CircleShape2D_kcc14")
 wait_time = 3.0
 one_shot = true
 
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DiveTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="timeout" from="ChaseTimer" to="." method="_on_chase_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="DiveTimer" to="." method="_on_dive_timer_timeout"]
