@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfony667xs5jm"]
+[gd_scene load_steps=13 format=3 uid="uid://bfony667xs5jm"]
 
 [ext_resource type="Script" uid="uid://fo4kt5vth2k7" path="res://Scenes/Player/Body Part Scenes/Arms/test_arm.gd" id="1_pysri"]
 [ext_resource type="Texture2D" uid="uid://ck0fqjvehw1bi" path="res://Assets/CharacterPNGs/Attack/arm attack - no fluff.png" id="2_mcd8l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44rg6"]
+size = Vector2(39.9167, 16.6667)
 
 [sub_resource type="Animation" id="Animation_dg762"]
 length = 0.001
@@ -17,10 +20,58 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_44rg6")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9.33333, -6.33333)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D/CollisionShape2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_pysri"]
 resource_name = "attack"
-length = 0.7
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -28,21 +79,109 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.166667, 0.3, 0.433333, 0.566667),
+"times": PackedFloat32Array(0.0666667, 0.1, 0.2, 0.333333, 0.466667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 4, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.124901, 0.216764, 0.336025),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.125707, 0.210318, 0.355365),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_44rg6"), SubResource("RectangleShape2D_44rg6"), SubResource("RectangleShape2D_44rg6")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.129736, 0.216764, 0.24255, 0.357782),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5.87089, -6.33333), Vector2(9.33333, -6.33333), Vector2(9.33333, -6.33333), Vector2(-1, -6.33333), Vector2(2.07534, -6.33333)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D/CollisionShape2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.141018),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_44rg6"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oa8rm"]
 _data = {
 &"RESET": SubResource("Animation_dg762"),
-&"attack": SubResource("Animation_pysri")
+&"attack": SubResource("Animation_pysri"),
+&"idle": SubResource("Animation_44rg6")
 }
 
-[node name="TestArm" type="Node2D"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_82sb8"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_fli2t"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_82sb8")
+blend_point_0/pos = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_44rg6"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_82sb8"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_44rg6")
+blend_point_0/pos = 0.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qoqoo"]
+states/attack/node = SubResource("AnimationNodeBlendSpace1D_fli2t")
+states/attack/position = Vector2(653, 100)
+states/idle/node = SubResource("AnimationNodeBlendSpace1D_82sb8")
+states/idle/position = Vector2(424, 105)
+
+[node name="TestArm" type="Node2D" node_paths=PackedStringArray("animation_tree")]
 scale = Vector2(2, 2)
 script = ExtResource("1_pysri")
+animation_tree = NodePath("AnimationTree")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
@@ -57,3 +196,17 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_mcd8l")
 hframes = 2
 vframes = 3
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(9.33333, -6.33333)
+shape = SubResource("RectangleShape2D_44rg6")
+disabled = true
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_qoqoo")
+anim_player = NodePath("../AnimationPlayer")
+parameters/attack/blend_position = 0.00149477
+parameters/idle/blend_position = 0
