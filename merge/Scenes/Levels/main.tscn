@@ -1,11 +1,12 @@
-[gd_scene load_steps=20 format=4 uid="uid://d2h4yf8j5d665"]
+[gd_scene load_steps=21 format=4 uid="uid://d2h4yf8j5d665"]
 
 [ext_resource type="Script" uid="uid://bx1ptepa7wadj" path="res://Scenes/Player/player.gd" id="1_7i1ub"]
-[ext_resource type="Texture2D" uid="uid://bib01rfa654ux" path="res://Assets/CharacterPNGs/Idle/Toechondria_Idle_Layer_parts.png" id="2_w0lsm"]
-[ext_resource type="Texture2D" uid="uid://two2v0wr2j8b" path="res://Assets/CharacterPNGs/Jump/Toechondria_4F_Jump.png" id="3_tpkgp"]
-[ext_resource type="Texture2D" uid="uid://d0iotp0a77uv8" path="res://Assets/CharacterPNGs/Walk/Toechondria_Walk_SeparateParts.png" id="4_irfg1"]
-[ext_resource type="Texture2D" uid="uid://c3maugjd51qqm" path="res://Assets/Level Designs/Ground_tiles_base.png" id="5_5sf7f"]
+[ext_resource type="Texture2D" uid="uid://c6reilu45j31c" path="res://Assets/CharacterPNGs/Idle/Toechondria_Idle_Layer_parts.png" id="2_w0lsm"]
+[ext_resource type="Texture2D" uid="uid://bwy8dl8qel4iu" path="res://Assets/CharacterPNGs/Jump/Toechondria_4F_Jump.png" id="3_tpkgp"]
+[ext_resource type="Texture2D" uid="uid://d16yuuo8l71nq" path="res://Assets/CharacterPNGs/Walk/Toechondria_Walk_SeparateParts.png" id="4_irfg1"]
+[ext_resource type="Texture2D" uid="uid://bhhpmbqcdrqqx" path="res://Assets/Level Designs/Ground_tiles_base.png" id="5_5sf7f"]
 [ext_resource type="PackedScene" uid="uid://da7urblf8fisc" path="res://Scenes/Enemy/enemy.tscn" id="6_w0lsm"]
+[ext_resource type="PackedScene" uid="uid://bqaa7rsmwq6nj" path="res://Scenes/EnemyFlyingBat/enemy_flying_bat.tscn" id="7_tpkgp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("2_w0lsm")
@@ -138,3 +139,18 @@ use_kinematic_bodies = true
 
 [node name="Enemy" parent="." instance=ExtResource("6_w0lsm")]
 position = Vector2(1117, 209)
+
+[node name="EnemyFlyingBat" parent="." instance=ExtResource("7_tpkgp")]
+position = Vector2(610, 31)
+
+[node name="EnemyFlyingBat2" parent="." instance=ExtResource("7_tpkgp")]
+position = Vector2(569, 26)
+
+[node name="EnemyFlyingBat3" parent="." instance=ExtResource("7_tpkgp")]
+position = Vector2(597, 22)
+
+[node name="EnemyFlyingBat4" parent="." instance=ExtResource("7_tpkgp")]
+position = Vector2(571, 20)
+
+[node name="EnemyFlyingBat5" parent="." instance=ExtResource("7_tpkgp")]
+position = Vector2(599, 17)
