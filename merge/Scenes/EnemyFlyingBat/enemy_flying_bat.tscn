@@ -1,7 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bqaa7rsmwq6nj"]
 
-[ext_resource type="Script" uid="uid://dkvwtlrjb7rcp" path="res://Scenes/EnemyFlyingBat/enemy_flying_bat.gd" id="1_13a1k"]
+[ext_resource type="Script" uid="uid://u0swwqee7241" path="res://Scenes/EnemyFlyingBat/enemy_flying_bat_script.gd" id="1_13a1k"]
 [ext_resource type="Texture2D" uid="uid://cwqoxsan7d8qb" path="res://Assets/CharacterPNGs/EnemyFlyingBat/bat.png" id="2_1nrdy"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3hyk"]
 atlas = ExtResource("2_1nrdy")

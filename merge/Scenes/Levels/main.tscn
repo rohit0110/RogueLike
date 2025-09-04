@@ -141,16 +141,16 @@ use_kinematic_bodies = true
 position = Vector2(1117, 209)
 
 [node name="EnemyFlyingBat" parent="." instance=ExtResource("7_tpkgp")]
-position = Vector2(590, 61)
+position = Vector2(610, 31)
 
 [node name="EnemyFlyingBat2" parent="." instance=ExtResource("7_tpkgp")]
-position = Vector2(590, 61)
+position = Vector2(569, 26)
 
 [node name="EnemyFlyingBat3" parent="." instance=ExtResource("7_tpkgp")]
-position = Vector2(590, 61)
+position = Vector2(597, 22)
 
 [node name="EnemyFlyingBat4" parent="." instance=ExtResource("7_tpkgp")]
-position = Vector2(635, 69)
+position = Vector2(571, 20)
 
 [node name="EnemyFlyingBat5" parent="." instance=ExtResource("7_tpkgp")]
-position = Vector2(635, 69)
+position = Vector2(599, 17)
