@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqaa7rsmwq6nj"]
+[gd_scene load_steps=9 format=3 uid="uid://bqaa7rsmwq6nj"]
 
 [ext_resource type="Script" uid="uid://u0swwqee7241" path="res://Scenes/EnemyFlyingBat/enemy_flying_bat_script.gd" id="1_13a1k"]
-[ext_resource type="Texture2D" uid="uid://cwqoxsan7d8qb" path="res://Assets/CharacterPNGs/EnemyFlyingBat/bat.png" id="2_1nrdy"]
-
+[ext_resource type="Texture2D" uid="uid://bq681req634fn" path="res://Assets/CharacterPNGs/EnemyFlyingBat/bat.png" id="2_1nrdy"]
+[ext_resource type="PackedScene" uid="uid://cwn25miwo2y2h" path="res://Scenes/HUD/HealthBarEnemy.tscn" id="3_1nrdy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3hyk"]
 atlas = ExtResource("2_1nrdy")
@@ -61,6 +61,16 @@ one_shot = true
 [node name="DiveTimer" type="Timer" parent="."]
 wait_time = 0.75
 one_shot = true
+
+[node name="HealthBar" parent="." instance=ExtResource("3_1nrdy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -14.0
+offset_top = -15.0
+offset_right = 13.0
+offset_bottom = -11.0
+grow_horizontal = 2
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="timeout" from="ChaseTimer" to="." method="_on_chase_timer_timeout"]

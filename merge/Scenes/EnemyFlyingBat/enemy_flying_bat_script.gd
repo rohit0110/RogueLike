@@ -26,6 +26,9 @@ var target_position: Vector2 = Vector2.ZERO
 @onready var attack_timer: Timer = $AttackTimer
 @onready var dive_timer: Timer = $DiveTimer
 
+#HPbar
+@onready var healthbar = $HealthBar
+
 
 func _ready() -> void:
 	player = get_node_or_null("/root/Main/Player")
@@ -33,6 +36,7 @@ func _ready() -> void:
 	direction_timer.start()
 	_on_direction_timer_timeout()
 	animated_sprite.play("fly")
+	healthbar.init_health(5)
 
 
 func _physics_process(delta: float) -> void:
