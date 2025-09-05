@@ -4,13 +4,16 @@ extends Node2D
 var playback: AnimationNodeStateMachinePlayback
 var attack_state : bool = false
 
+@onready var anim = $AnimationPlayer
+
 func _ready() -> void:
 	playback = animation_tree["parameters/playback"]
-	
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		attack_state = true
+		
 	select_animation()
 	update_animation_parameters()
 	
@@ -21,6 +24,6 @@ func select_animation():
 		attack_state = false
 	else:
 		playback.travel("idle")
-
+		
 func update_animation_parameters():
-	pass
+	pass				# DIRECTION FOR MOVEMENT ANIMATION
