@@ -7,7 +7,7 @@ radius = 54.0
 height = 246.0
 
 [node name="player_alt" type="CharacterBody2D"]
-position = Vector2(0, 180)
+position = Vector2(0, 280)
 script = ExtResource("1_pbtr8")
 
 [node name="LeftArm" type="Node2D" parent="."]
