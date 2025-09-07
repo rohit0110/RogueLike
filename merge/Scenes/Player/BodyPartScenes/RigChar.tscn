@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://di06nabkrplbh"]
 
-[ext_resource type="PackedScene" uid="uid://dm2dnot7xhj2p" path="res://Scenes/Player/Body Part Scenes/RigHead/RigHead.tscn" id="1_hcoe6"]
-[ext_resource type="PackedScene" uid="uid://7mvuqltagalc" path="res://Scenes/Player/Body Part Scenes/RigTorso/RigTorso.tscn" id="2_6n2hn"]
-[ext_resource type="PackedScene" uid="uid://be4nn4uuu1qgo" path="res://Scenes/Player/Body Part Scenes/RigArms/RigLeftArm.tscn" id="3_xpvmu"]
-[ext_resource type="PackedScene" uid="uid://bdbqxexxodb32" path="res://Scenes/Player/Body Part Scenes/RigArms/RigRightArm.tscn" id="4_ty7tf"]
-[ext_resource type="PackedScene" uid="uid://de1wo850vs1xe" path="res://Scenes/Player/Body Part Scenes/RigLegs/RigLeftLeg.tscn" id="5_de8fc"]
-[ext_resource type="PackedScene" uid="uid://b24mlhsofie3h" path="res://Scenes/Player/Body Part Scenes/RigLegs/RigRightLeg.tscn" id="6_tb8dm"]
+[ext_resource type="PackedScene" uid="uid://dm2dnot7xhj2p" path="res://Scenes/Player/BodyPartScenes/RigHead/RigHead.tscn" id="1_hcoe6"]
+[ext_resource type="PackedScene" uid="uid://7mvuqltagalc" path="res://Scenes/Player/BodyPartScenes/RigTorso/RigTorso.tscn" id="2_6n2hn"]
+[ext_resource type="PackedScene" uid="uid://be4nn4uuu1qgo" path="res://Scenes/Player/BodyPartScenes/RigArms/RigLeftArm.tscn" id="3_xpvmu"]
+[ext_resource type="PackedScene" uid="uid://bdbqxexxodb32" path="res://Scenes/Player/BodyPartScenes/RigArms/RigRightArm.tscn" id="4_ty7tf"]
+[ext_resource type="PackedScene" uid="uid://de1wo850vs1xe" path="res://Scenes/Player/BodyPartScenes/RigLegs/RigLeftLeg.tscn" id="5_de8fc"]
+[ext_resource type="PackedScene" uid="uid://b24mlhsofie3h" path="res://Scenes/Player/BodyPartScenes/RigLegs/RigRightLeg.tscn" id="6_tb8dm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vktqy"]
 radius = 41.0

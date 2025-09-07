@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bdbqxexxodb32"]
 
-[ext_resource type="Script" uid="uid://dav17cuhpickm" path="res://Scenes/Player/Body Part Scenes/RigArms/toechondria_arm.gd" id="1_bpp0d"]
+[ext_resource type="Script" uid="uid://dav17cuhpickm" path="res://Scenes/Player/BodyPartScenes/RigArms/toechondria_arm.gd" id="1_bpp0d"]
 [ext_resource type="Texture2D" uid="uid://5kycfwh4n4bo" path="res://Assets/CharacterPNGs/Body Parts/Arms/Right Arms/toechondria_right_arm_spritesheet.png" id="2_bpp0d"]
 
 [sub_resource type="Animation" id="Animation_s6vtg"]

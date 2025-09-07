@@ -19,12 +19,12 @@ var current_right_leg : Node2D = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	InputMap.load_from_project_settings()
-	swap_left_arm("res://Scenes/Player/Body Part Scenes/RigArms/RigLeftArm.tscn")
-	swap_right_arm("res://Scenes/Player/Body Part Scenes/RigArms/RigRightArm.tscn")
-	swap_left_leg("res://Scenes/Player/Body Part Scenes/RigLegs/RigLeftLeg.tscn")
-	swap_torso("res://Scenes/Player/Body Part Scenes/RigTorso/RigTorso.tscn")
-	swap_right_leg("res://Scenes/Player/Body Part Scenes/RigLegs/RigRightLeg.tscn")
-	var head_scene = load("res://Scenes/Player/Body Part Scenes/RigHead/RigHead.tscn")
+	swap_left_arm("res://Scenes/Player/BodyPartScenes/RigArms/RigLeftArm.tscn")
+	swap_right_arm("res://Scenes/Player/BodyPartScenes/RigArms/RigRightArm.tscn")
+	swap_left_leg("res://Scenes/Player/BodyPartScenes/RigLegs/RigLeftLeg.tscn")
+	swap_torso("res://Scenes/Player/BodyPartScenes/RigTorso/RigTorso.tscn")
+	swap_right_leg("res://Scenes/Player/BodyPartScenes/RigLegs/RigRightLeg.tscn")
+	var head_scene = load("res://Scenes/Player/BodyPartScenes/RigHead/RigHead.tscn")
 	head_slot.add_child(head_scene.instantiate())
 	
 func swap_right_arm(arm_path: String):
@@ -83,5 +83,5 @@ func _process(delta: float) -> void:
 		position.y -= move_speed_pixels
 		
 	if Input.is_action_just_pressed("change_arm"):
-		swap_left_arm("res://Scenes/Player/Body Part Scenes/Arms/test_arm.tscn")
+		swap_left_arm("res://Scenes/Player/BodyPartScenes/Arms/test_arm.tscn")
 	

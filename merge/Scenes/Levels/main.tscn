@@ -1,97 +1,9 @@
-[gd_scene load_steps=21 format=4 uid="uid://d2h4yf8j5d665"]
+[gd_scene load_steps=7 format=4 uid="uid://d2h4yf8j5d665"]
 
-[ext_resource type="Script" uid="uid://bx1ptepa7wadj" path="res://Scenes/Player/player.gd" id="1_7i1ub"]
-[ext_resource type="Texture2D" uid="uid://c6reilu45j31c" path="res://Assets/CharacterPNGs/Idle/Toechondria_Idle_Layer_parts.png" id="2_w0lsm"]
-[ext_resource type="Texture2D" uid="uid://bwy8dl8qel4iu" path="res://Assets/CharacterPNGs/Jump/Toechondria_4F_Jump.png" id="3_tpkgp"]
-[ext_resource type="Texture2D" uid="uid://d16yuuo8l71nq" path="res://Assets/CharacterPNGs/Walk/Toechondria_Walk_SeparateParts.png" id="4_irfg1"]
-[ext_resource type="Texture2D" uid="uid://bhhpmbqcdrqqx" path="res://Assets/Level Designs/Ground_tiles_base.png" id="5_5sf7f"]
+[ext_resource type="PackedScene" uid="uid://xt236ukuaf8g" path="res://Scenes/Player/player_alt.tscn" id="1_nk5xi"]
+[ext_resource type="Texture2D" uid="uid://bux1h4goig2lg" path="res://Assets/LevelDesigns/Ground_tiles_base.png" id="5_5sf7f"]
 [ext_resource type="PackedScene" uid="uid://da7urblf8fisc" path="res://Scenes/Enemy/enemy.tscn" id="6_w0lsm"]
 [ext_resource type="PackedScene" uid="uid://bqaa7rsmwq6nj" path="res://Scenes/EnemyFlyingBat/enemy_flying_bat.tscn" id="7_tpkgp"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
-atlas = ExtResource("2_w0lsm")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
-atlas = ExtResource("2_w0lsm")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
-atlas = ExtResource("3_tpkgp")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
-atlas = ExtResource("3_tpkgp")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
-atlas = ExtResource("3_tpkgp")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
-atlas = ExtResource("4_irfg1")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
-atlas = ExtResource("4_irfg1")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivps1"]
-atlas = ExtResource("4_irfg1")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
-atlas = ExtResource("4_irfg1")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bwjto"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hqtel")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sweqy")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1bvp3")
-}, {
-"duration": 1.2,
-"texture": SubResource("AtlasTexture_dw050")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_b26j0")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 20.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n7ghd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nvl01")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ivps1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_urp6f")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_op7ga"]
-radius = 14.0
-height = 64.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
 texture = ExtResource("5_5sf7f")
@@ -110,24 +22,9 @@ sources/0 = SubResource("TileSetAtlasSource_7mycd")
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(40, 40)
-script = ExtResource("1_7i1ub")
+[node name="player_alt" parent="." instance=ExtResource("1_nk5xi")]
+position = Vector2(112, 44)
 metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(1, 0)
-sprite_frames = SubResource("SpriteFrames_bwjto")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.0668314
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CapsuleShape2D_op7ga")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-offset = Vector2(150, 0)
-zoom = Vector2(1.2, 1.2)
 
 [node name="Ground" type="TileMapLayer" parent="."]
 use_parent_material = true
