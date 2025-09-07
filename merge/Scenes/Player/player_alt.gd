@@ -2,7 +2,10 @@
 extends CharacterBody2D
 
 
-var move_speed_pixels : int = 10
+@export var speed := 200.0
+@export var jump_force := -400.0
+@export var gravity := 900.0
+
 var current_left_arm : Node2D = null
 var current_right_arm : Node2D = null
 var current_left_leg : Node2D = null
@@ -66,22 +69,30 @@ func swap_right_leg(leg_path: String):
 	var leg_scene = load(leg_path)
 	current_right_leg = leg_scene.instantiate()
 	right_leg_slot.add_child(current_right_leg)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+
+func _physics_process(delta: float) -> void:
+	# Apply gravity
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	else:
+		if velocity.y > 0:
+			velocity.y = 0
+
+	# Horizontal input
+	velocity.x = 0
 	if Input.is_action_pressed("move_right"):
+		velocity.x += speed
 		$".".scale.x = 1
-		position.x += move_speed_pixels
-	
 	if Input.is_action_pressed("move_left"):
+		velocity.x -= speed
 		$".".scale.x = -1
-		position.x -= move_speed_pixels
-		
-	if Input.is_action_pressed("move_down"):
-		position.y += move_speed_pixels
-	
-	if Input.is_action_pressed("jump"):
-		position.y -= move_speed_pixels
+
+	# Jump input
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_force
 		
 	if Input.is_action_just_pressed("change_arm"):
 		swap_left_arm("res://Scenes/Player/BodyPartScenes/Arms/test_arm.tscn")
+	
+	move_and_slide()
 	
