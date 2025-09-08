@@ -2,37 +2,25 @@ extends Node2D
 
 @export var animation_tree : AnimationTree
 var playback: AnimationNodeStateMachinePlayback
-var direction : int = 0
-var last_direction : int = -1
 @onready var anim = $AnimationPlayer
-var player: CharacterBody2D
 
 func _ready() -> void:
 	playback = animation_tree["parameters/playback"]
-	var players = get_tree().get_nodes_in_group("player")
-	if players.size() > 0:
-		player = players[0]
+	if anim.has_animation("jump"):
+		anim.get_animation("jump").loop_mode = Animation.LOOP_NONE
 
-
-func _process(_delta: float) -> void:
-	if Input.is_action_pressed("move_right"):
-		last_direction = 1
-		direction = 1
-	elif Input.is_action_pressed("move_left"):
-		last_direction = -1
-		direction = -1
+func update_animation(is_in_air: bool, direction: float):
+	if is_in_air:
+		# The AnimationTree for legs doesn't have a "jump" state.
+		# To play the jump animation, we must play it directly and disable the tree.
+		if animation_tree.active:
+			animation_tree.active = false
+		# Check if jump animation is already playing to avoid restarting it every frame
+		if anim.current_animation != "jump":
+			anim.play("jump")
 	else:
-		direction = 0
-		
-	select_animation()
-	update_animation_parameters()
-	
-	
-func select_animation():
-	if player and not player.is_on_floor():
-		playback.travel("jump")
-	else:
+		# Re-enable the animation tree for walking/idling.
+		if not animation_tree.active:
+			animation_tree.active = true
 		playback.travel("movement")
-	
-func update_animation_parameters():
-	animation_tree["parameters/movement/blend_position"] = direction
+		animation_tree["parameters/movement/blend_position"] = direction
