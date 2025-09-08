@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://de1wo850vs1xe"]
+[gd_scene load_steps=12 format=3 uid="uid://de1wo850vs1xe"]
 
-[ext_resource type="Texture2D" uid="uid://v702bdxdrvjq" path="res://Assets/CharacterPNGs/Body Parts/Legs/toechondria_left_leg_spritesheet.png" id="1_xdc2s"]
+[ext_resource type="Script" uid="uid://ck28elgc71p3s" path="res://Scenes/Player/Body Part Scenes/RigLegs/rig_left_leg.gd" id="1_qrifa"]
+[ext_resource type="Texture2D" uid="uid://c2a0y16gnlodv" path="res://Assets/CharacterPNGs/Body Parts/Legs/toechondria_left_leg_spritesheet.png" id="1_xdc2s"]
 
 [sub_resource type="Animation" id="Animation_r34lo"]
 length = 0.001
@@ -70,7 +71,31 @@ _data = {
 &"walk": SubResource("Animation_qrifa")
 }
 
-[node name="RigLeftLeg" type="Node2D"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r34lo"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lrrea"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2dm1h"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_2dm1h"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_r34lo")
+blend_point_0/pos = 1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_lrrea")
+blend_point_1/pos = -1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_2dm1h")
+blend_point_2/pos = 0.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_expj4"]
+states/movement/node = SubResource("AnimationNodeBlendSpace1D_2dm1h")
+states/movement/position = Vector2(512, 92)
+
+[node name="RigLeftLeg" type="Node2D" node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("1_qrifa")
+animation_tree = NodePath("AnimationTree")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -82,3 +107,8 @@ vframes = 2
 libraries = {
 &"": SubResource("AnimationLibrary_lrrea")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_expj4")
+anim_player = NodePath("../AnimationPlayer")
+parameters/movement/blend_position = 0
