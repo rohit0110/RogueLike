@@ -5,5 +5,6 @@
 [node name="test_level" type="Node2D"]
 
 [node name="player_alt" parent="." instance=ExtResource("1_7t06c")]
-position = Vector2(0, 250)
-scale = Vector2(-1, 1)
+position = Vector2(330, 240)
+jump_force = null
+gravity = null

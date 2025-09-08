@@ -47,7 +47,7 @@ func update_animation_parameters():
 func _on_shoot(pos: Variant, direction: Variant) -> void:
 	await get_tree().create_timer(0.2).timeout
 	var bullet = bullet_scene.instantiate()
-	bullet.global_position = global_position + pos
+	bullet.global_position = bullet_marker.global_position
 	bullet.scale.x = last_direction
 	bullet.direction = last_direction
 	get_tree().current_scene.add_child(bullet)

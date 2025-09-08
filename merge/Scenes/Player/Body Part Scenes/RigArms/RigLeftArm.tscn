@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://be4nn4uuu1qgo"]
 
 [ext_resource type="Script" uid="uid://dav17cuhpickm" path="res://Scenes/Player/Body Part Scenes/RigArms/toechondria_arm.gd" id="1_cp83w"]
-[ext_resource type="Texture2D" uid="uid://5kycfwh4n4bo" path="res://Assets/CharacterPNGs/Body Parts/Arms/Right Arms/toechondria_right_arm_spritesheet.png" id="2_cp83w"]
+[ext_resource type="Texture2D" uid="uid://b1uc3np2l5qiw" path="res://Assets/CharacterPNGs/Body Parts/Arms/Right Arms/toechondria_right_arm_spritesheet.png" id="2_cp83w"]
 
 [sub_resource type="Animation" id="Animation_xnnka"]
 length = 0.001
@@ -111,6 +111,7 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_5gvrm")
 blend_point_1/pos = 1.0
 blend_point_2/node = SubResource("AnimationNodeAnimation_ck35k")
 blend_point_2/pos = 0.0
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d1eh3"]
 states/attack/node = SubResource("AnimationNodeBlendSpace1D_xnnka")
@@ -140,3 +141,4 @@ parameters/attack/blend_position = 0
 parameters/movement/blend_position = 0
 
 [node name="BulletStartPosition" type="Marker2D" parent="."]
+position = Vector2(42, -37)

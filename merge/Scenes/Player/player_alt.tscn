@@ -7,23 +7,24 @@ radius = 54.0
 height = 246.0
 
 [node name="player_alt" type="CharacterBody2D"]
-position = Vector2(0, 180)
+position = Vector2(177, 325)
 script = ExtResource("1_pbtr8")
+move_speed_pixels = 10
 
-[node name="LeftArm" type="Node2D" parent="."]
+[node name="Positioning" type="Node2D" parent="."]
+
+[node name="LeftArm" type="Node2D" parent="Positioning"]
 position = Vector2(58, -13)
 
-[node name="LeftLeg" type="Node2D" parent="."]
+[node name="LeftLeg" type="Node2D" parent="Positioning"]
 
-[node name="Torso" type="Node2D" parent="."]
+[node name="Torso" type="Node2D" parent="Positioning"]
 
-[node name="RightLeg" type="Node2D" parent="."]
+[node name="RightLeg" type="Node2D" parent="Positioning"]
 
-[node name="RightArm" type="Node2D" parent="."]
+[node name="RightArm" type="Node2D" parent="Positioning"]
 
-[node name="Head" type="Node2D" parent="."]
+[node name="Head" type="Node2D" parent="Positioning"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ckaed")
-
-[connection signal="shoot" from="RightArm/RigRightArm" to="RightArm/RigRightArm" method="_on_shoot"]
