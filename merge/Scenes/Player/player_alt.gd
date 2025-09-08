@@ -80,34 +80,32 @@ func swap_right_leg(leg_path: String):
 	right_leg_slot.add_child(current_right_leg)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	# Gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
-		# Reset vertical velocity when touching ground
+		is_jumping = false
 		if velocity.y > 0:
 			velocity.y = 0
-	
-	
+
+	# Horizontal Movement
 	var horizontal_input = Input.get_axis("move_left", "move_right")
-	
-	# The transforms have to be made to a position wrapper node, otherwise it fights to look
-	# in the right direction for some reason
-	
 	velocity.x = horizontal_input * move_speed_pixels
+
+	# Flipping character
 	if horizontal_input != 0:
 		if $Positioning.scale.x < 0 and horizontal_input > 0:
 			$Positioning.scale.x = 1
 		elif $Positioning.scale.x > 0 and horizontal_input < 0:
 			$Positioning.scale.x = -1
-			
-	if Input.is_action_pressed("move_down"):
-		position.y += move_speed_pixels
+
+	# Jumping
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_force
+		is_jumping = true
 	
-	if Input.is_action_pressed("jump"):
-		position.y -= move_speed_pixels
-		
 	if Input.is_action_just_pressed("change_arm"):
 		swap_left_arm("res://Scenes/Player/Body Part Scenes/Arms/test_arm.tscn")
-	
+
 	move_and_slide()

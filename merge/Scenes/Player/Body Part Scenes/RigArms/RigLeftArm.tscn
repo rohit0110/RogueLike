@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://be4nn4uuu1qgo"]
+[gd_scene load_steps=16 format=3 uid="uid://be4nn4uuu1qgo"]
 
 [ext_resource type="Script" uid="uid://dav17cuhpickm" path="res://Scenes/Player/Body Part Scenes/RigArms/toechondria_arm.gd" id="1_cp83w"]
-[ext_resource type="Texture2D" uid="uid://b1uc3np2l5qiw" path="res://Assets/CharacterPNGs/Body Parts/Arms/Right Arms/toechondria_right_arm_spritesheet.png" id="2_cp83w"]
+[ext_resource type="Texture2D" uid="uid://b7fnalwp46fr7" path="res://Assets/CharacterPNGs/Body Parts/Arms/Right Arms/toechondria_right_arm_spritesheet.png" id="2_cp83w"]
 
 [sub_resource type="Animation" id="Animation_xnnka"]
 length = 0.001
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.233333, 0.366667, 0.466667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [5, 6, 13, 20, 5]
+"values": [5, 6, 15, 24, 5]
 }
 
 [sub_resource type="Animation" id="Animation_cp83w"]
@@ -60,7 +60,24 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.266667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 7]
+"values": [0, 9]
+}
+
+[sub_resource type="Animation" id="Animation_bddeq"]
+resource_name = "jump"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.233333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 16, 17]
 }
 
 [sub_resource type="Animation" id="Animation_5gvrm"]
@@ -85,6 +102,7 @@ _data = {
 &"RESET": SubResource("Animation_xnnka"),
 &"attack": SubResource("Animation_ck35k"),
 &"idle": SubResource("Animation_cp83w"),
+&"jump": SubResource("Animation_bddeq"),
 &"walk": SubResource("Animation_5gvrm")
 }
 
@@ -126,7 +144,7 @@ animation_tree = NodePath("AnimationTree")
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
 texture = ExtResource("2_cp83w")
-hframes = 7
+hframes = 9
 vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

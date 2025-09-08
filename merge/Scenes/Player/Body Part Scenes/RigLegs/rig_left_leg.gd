@@ -5,9 +5,13 @@ var playback: AnimationNodeStateMachinePlayback
 var direction : int = 0
 var last_direction : int = -1
 @onready var anim = $AnimationPlayer
+var player: CharacterBody2D
 
 func _ready() -> void:
 	playback = animation_tree["parameters/playback"]
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		player = players[0]
 
 
 func _process(_delta: float) -> void:
@@ -25,7 +29,10 @@ func _process(_delta: float) -> void:
 	
 	
 func select_animation():
-	playback.travel("movement")
+	if player and not player.is_on_floor():
+		playback.travel("jump")
+	else:
+		playback.travel("movement")
 	
 func update_animation_parameters():
 	animation_tree["parameters/movement/blend_position"] = direction
