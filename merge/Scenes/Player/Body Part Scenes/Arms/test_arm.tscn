@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44rg6"]
 size = Vector2(39.9167, 16.6667)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44rg6"]
+size = Vector2(39.9167, 16.6667)
+
 [sub_resource type="Animation" id="Animation_dg762"]
 length = 0.001
 tracks/0/type = "value"
