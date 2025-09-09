@@ -8,7 +8,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
+tracks/0/path = NodePath("Rotation/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -20,7 +20,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
+tracks/1/path = NodePath("Rotation/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -37,7 +37,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rotation/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -54,7 +54,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rotation/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -71,7 +71,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rotation/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -88,7 +88,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rotation/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -138,12 +138,6 @@ states/movement/position = Vector2(356, 109)
 script = ExtResource("1_bpp0d")
 animation_tree = NodePath("AnimationTree")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(4, 4)
-texture = ExtResource("2_bpp0d")
-hframes = 9
-vframes = 3
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_5gvrm")
@@ -154,7 +148,17 @@ tree_root = SubResource("AnimationNodeStateMachine_hk8mb")
 anim_player = NodePath("../AnimationPlayer")
 parameters/movement/blend_position = 0
 
-[node name="BulletStartPosition" type="Marker2D" parent="."]
-position = Vector2(44, -57)
+[node name="Rotation" type="Node2D" parent="."]
+position = Vector2(-39, -63)
+
+[node name="Sprite" type="Sprite2D" parent="Rotation"]
+position = Vector2(39, 63)
+scale = Vector2(4, 4)
+texture = ExtResource("2_bpp0d")
+hframes = 9
+vframes = 3
+
+[node name="BulletStartPosition" type="Marker2D" parent="Rotation"]
+position = Vector2(83, 6)
 
 [connection signal="shoot" from="." to="." method="_on_shoot"]
