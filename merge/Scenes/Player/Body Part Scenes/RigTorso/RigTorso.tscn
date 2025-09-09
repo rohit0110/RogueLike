@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://7mvuqltagalc"]
 
-[ext_resource type="Texture2D" uid="uid://uab3m8htffd8" path="res://Assets/CharacterPNGs/Body Parts/Torso/toechondria_torso_spritesheet.png" id="2_pw54b"]
+[ext_resource type="Texture2D" uid="uid://dis5ye645bobe" path="res://Assets/CharacterPNGs/Body Parts/Torso/toechondria_torso_spritesheet.png" id="2_pw54b"]
 
 [sub_resource type="Animation" id="Animation_abidk"]
 length = 0.001

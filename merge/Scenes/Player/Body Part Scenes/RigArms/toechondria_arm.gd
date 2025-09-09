@@ -50,5 +50,5 @@ func _on_shoot(pos: Variant, direction: Variant) -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = bullet_marker.global_position
 	bullet.scale.x = direction
-	bullet.direction = direction
+	bullet.direction = (get_global_mouse_position() - bullet_marker.global_position).normalized()
 	get_tree().current_scene.add_child(bullet)
