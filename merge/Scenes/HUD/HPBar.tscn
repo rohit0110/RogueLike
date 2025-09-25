@@ -1,12 +1,58 @@
-[gd_scene format=3 uid="uid://bmqqaee1uvu02"]
+[gd_scene load_steps=5 format=3 uid="uid://dpp5uqv5wlg4p"]
+
+[ext_resource type="PackedScene" uid="uid://cwn25miwo2y2h" path="res://Scenes/HUD/HealthBarEnemy.tscn" id="1_7uued"]
+
+[sub_resource type="GDScript" id="GDScript_7uued"]
+script/source = "extends CanvasLayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6fgm"]
+bg_color = Color(0.0216587, 0.038722, 0.0332821, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ir0x0"]
+bg_color = Color(0.811899, 0.421825, 1.92523e-07, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = SubResource("GDScript_7uued")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-anchors_preset = 2
-anchor_top = 1.0
+[node name="HealthBar" parent="." instance=ExtResource("1_7uued")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 33.0
+offset_top = -294.0
+offset_right = 133.0
+offset_bottom = -279.0
+grow_vertical = 2
+
+[node name="DamageBar2" type="ProgressBar" parent="HealthBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -92.0
-offset_right = 186.0
-offset_bottom = -5.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_r6fgm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ir0x0")
+value = 70.0
+show_percentage = false
+
+[node name="Timer2" type="Timer" parent="HealthBar"]
+wait_time = 0.4
+one_shot = true

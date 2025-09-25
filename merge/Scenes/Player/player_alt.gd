@@ -15,7 +15,8 @@ var last_direction = 1
 
 var is_jumping := false
 
-
+#HealthBar
+@onready var Healthbar = $HPBar
 
 
 # Body Part Slots. Body parts are added as CHILDREN -> IMP

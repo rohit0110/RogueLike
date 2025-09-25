@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://1y2bp8h5k2of"]
+
+[ext_resource type="Script" uid="uid://u0swwqee7241" path="res://Scenes/EnemyFlyingBat/enemy_flying_bat_script.gd" id="1_carqk"]
+[ext_resource type="Texture2D" uid="uid://bq681req634fn" path="res://Assets/CharacterPNGs/EnemyFlyingBat/bat.png" id="2_ocdyb"]
+[ext_resource type="PackedScene" uid="uid://cwn25miwo2y2h" path="res://Scenes/HUD/HealthBarEnemy.tscn" id="3_nw8o8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3hyk"]
+atlas = ExtResource("2_ocdyb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoosh"]
+atlas = ExtResource("2_ocdyb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvlqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3hyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoosh")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13a1k"]
+radius = 5.09902
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kcc14"]
+
+[node name="EnemyFlyingBat" type="CharacterBody2D"]
+script = ExtResource("1_carqk")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1, 1.159)
+sprite_frames = SubResource("SpriteFrames_kvlqg")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_13a1k")
+
+[node name="DetectionZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
+scale = Vector2(15, 15)
+shape = SubResource("CircleShape2D_kcc14")
+
+[node name="DirectionTimer" type="Timer" parent="."]
+
+[node name="ChaseTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DiveTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="HealthBar" parent="." instance=ExtResource("3_nw8o8")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -14.0
+offset_top = -15.0
+offset_right = 13.0
+offset_bottom = -11.0
+grow_horizontal = 2
+
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
+[connection signal="timeout" from="ChaseTimer" to="." method="_on_chase_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="DiveTimer" to="." method="_on_dive_timer_timeout"]
