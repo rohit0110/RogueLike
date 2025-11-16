@@ -7,6 +7,7 @@ func _ready() -> void:
 	var player : CharacterBody2D = get_tree().get_first_node_in_group("player")
 	scale = player.scale
 	rotation = direction.angle()
+	
 
 
 func _process(delta):
