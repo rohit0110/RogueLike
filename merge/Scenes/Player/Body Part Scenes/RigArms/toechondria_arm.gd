@@ -39,7 +39,7 @@ func update_animation(is_in_air: bool, direction: float):
 func trigger_attack():
 	if not attack_state:
 		attack_state = true
-		var angle_to_turn : float = get_local_mouse_position().angle()
+		var angle_to_turn : float = get_local_mouse_position().normalized().angle()
 		if angle_to_turn > angle_to_turn_limit:
 			angle_to_turn = angle_to_turn_limit
 		elif angle_to_turn < -angle_to_turn_limit:
@@ -59,5 +59,7 @@ func _on_shoot(angle_to_turn: float, direction: Variant) -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = bullet_marker.global_position
 	bullet.scale.x = direction
+	if direction < 0:
+		angle_to_turn = PI - angle_to_turn
 	bullet.direction = Vector2.RIGHT.rotated(angle_to_turn)
 	get_tree().current_scene.add_child(bullet)
