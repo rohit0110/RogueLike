@@ -120,9 +120,14 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_force
 		is_jumping = true
 
-	# Attacking
-	if Input.is_action_just_pressed("attack"):
-		# Assuming right arm attacks for now. Can be made more complex.
+	# Attacking - Mouse buttons
+	# Mouse 1 (left click) - Left arm attack
+	if Input.is_action_just_pressed("attack_left"):
+		if current_left_arm and current_left_arm.has_method("trigger_attack"):
+			current_left_arm.trigger_attack()
+
+	# Mouse 2 (right click) - Right arm attack
+	if Input.is_action_just_pressed("attack_right"):
 		if current_right_arm and current_right_arm.has_method("trigger_attack"):
 			current_right_arm.trigger_attack()
 	
