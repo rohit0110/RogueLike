@@ -17,6 +17,20 @@ func _ready() -> void:
 	get_tree().create_timer(lifetime).timeout.connect(_on_lifetime_expired)
 
 func _process(delta):
+	# Check for tile collision using raycast
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(
+		global_position,
+		global_position + direction * speed * delta,
+		1  # Layer 1 (tiles)
+	)
+	var result = space_state.intersect_ray(query)
+
+	# If we hit a tile, destroy projectile
+	if not result.is_empty():
+		queue_free()
+		return
+
 	position += direction * speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
