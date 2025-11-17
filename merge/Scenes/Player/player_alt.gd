@@ -30,13 +30,13 @@ var is_jumping := false
 func _ready() -> void:
 	add_to_group("player")
 	InputMap.load_from_project_settings()
-	swap_left_arm("res://Scenes/Player/Body Part Scenes/RigArms/RigLeftArm.tscn")
-	swap_right_arm("res://Scenes/Player/Body Part Scenes/RigArms/RigRightArm.tscn")
-	swap_left_leg("res://Scenes/Player/Body Part Scenes/RigLegs/RigLeftLeg.tscn")
-	swap_torso("res://Scenes/Player/Body Part Scenes/RigTorso/RigTorso.tscn")
-	swap_right_leg("res://Scenes/Player/Body Part Scenes/RigLegs/RigRightLeg.tscn")
-	
-	var head_scene = load("res://Scenes/Player/Body Part Scenes/RigHead/RigHead.tscn")
+	swap_left_arm("res://Scenes/Player/BodyPartScenes/RigArms/RigLeftArm.tscn")
+	swap_right_arm("res://Scenes/Player/BodyPartScenes/RigArms/RigRightArm.tscn")
+	swap_left_leg("res://Scenes/Player/BodyPartScenes/RigLegs/RigLeftLeg.tscn")
+	swap_torso("res://Scenes/Player/BodyPartScenes/RigTorso/RigTorso.tscn")
+	swap_right_leg("res://Scenes/Player/BodyPartScenes/RigLegs/RigRightLeg.tscn")
+
+	var head_scene = load("res://Scenes/Player/BodyPartScenes/RigHead/RigHead.tscn")
 	var head_instance = head_scene.instantiate()
 	_disable_jump_loop(head_instance)
 	head_slot.add_child(head_instance)
@@ -127,7 +127,7 @@ func _physics_process(delta: float) -> void:
 			current_right_arm.trigger_attack()
 	
 	if Input.is_action_just_pressed("change_arm"):
-		swap_left_arm("res://Scenes/Player/Body Part Scenes/Arms/test_arm.tscn")
+		swap_left_arm("res://Scenes/Player/BodyPartScenes/Arms/test_arm.tscn")
 
 	move_and_slide()
 

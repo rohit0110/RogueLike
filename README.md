@@ -31,10 +31,10 @@ To maintain consistency, please adhere to the standard Godot naming conventions:
 All visual and audio assets should be placed in this directory, organized by type.
 
 -   **`Assets/CharacterPNGs/`**: For all character-related sprites.
-    -   **`Assets/CharacterPNGs/Body Parts/`**: Individual body part sprites (e.g., arms, legs, torso).
+    -   **`Assets/CharacterPNGs/BodyParts/`**: Individual body part sprites (e.g., arms, legs, torso).
     -   **`Assets/CharacterPNGs/[Action]/`**: Sprites for specific character actions like `Idle`, `Walk`, `Jump`, `Attack`.
 -   **`Assets/Animations/`**: For pre-made animation files or spritesheets that are not tied to a single character sprite.
--   **`Assets/Level Designs/`**: For tilesets, backgrounds, and other environmental assets.
+-   **`Assets/LevelDesigns/`**: For tilesets, backgrounds, and other environmental assets.
 -   **`Assets/Audio/`**: For all sound effects and music (folder to be created).
 
 **Important:** When importing assets into Godot, ensure the `.import` files are committed to the repository along with the asset itself.
@@ -47,7 +47,7 @@ All game scenes and scripts should be placed here, organized by their function.
 
 -   **`Scenes/Player/`**: Contains the main player scene (`player_character.tscn`) and associated scripts. This scene will assemble the various body parts.
 -   **`Scenes/Enemy/`**: For all enemy scenes and their AI scripts.
--   **`Scenes/Body Part Scenes/`**: Contains individual scenes for each swappable body part (e.g., `default_arm.tscn`). These are the building blocks for the player and potentially other characters.
+-   **`Scenes/BodyPartScenes/`**: Contains individual scenes for each swappable body part (e.g., `default_arm.tscn`). These are the building blocks for the player and potentially other characters.
 -   **`Scenes/Levels/`**: For all game level scenes (e.g., `level_01.tscn`, `main.tscn`).
 -   **`Scenes/Menu/`**: For all UI-related scenes, such as the main menu, settings menu, and HUD.
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dm2dnot7xhj2p"]
 
-[ext_resource type="Texture2D" uid="uid://rvtq8nrc8g4f" path="res://Assets/CharacterPNGs/Body Parts/Head/toechondria_head_spritesheet.png" id="1_va3vb"]
+[ext_resource type="Texture2D" uid="uid://rvtq8nrc8g4f" path="res://Assets/CharacterPNGs/BodyParts/Head/toechondria_head_spritesheet.png" id="1_va3vb"]
 
 [sub_resource type="Animation" id="Animation_2ems0"]
 length = 0.001
