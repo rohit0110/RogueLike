@@ -9,10 +9,11 @@ func _set_health(new_health):
 	var prev_health = health
 	health = min(max_value, new_health)
 	value = health
-	
+
 	if health <= 0:
-		queue_free()
-	
+		# Destroy the parent enemy, not just the health bar
+		get_parent().queue_free()
+
 	if health < prev_health:
 		timer.start()
 	else:

@@ -99,6 +99,8 @@ radius = 13.0
 height = 66.0
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_iifgy")
 metadata/_edit_group_ = true
 
