@@ -176,3 +176,20 @@ func _execute_retreat_hop() -> void:
 	velocity.x = -sign(vector_to_player.x) * speed # Hop away
 	velocity.y = jump_force
 	unstuck_cooldown.start()
+
+func take_damage(amount: int, knockback_direction: Vector2) -> void:
+	# Apply damage to health bar
+	health_bar.health -= amount
+
+	# Apply knockback
+	var knockback_force = 250.0
+	velocity.x = knockback_direction.normalized().x * knockback_force
+	velocity.y = -100  # Small upward bump
+
+	# Interrupt current action - reset to wander state
+	is_chasing = false
+	chase_timer.stop()
+	retreat_timer.stop()
+
+	# Brief unstuck cooldown to prevent immediate re-chasing
+	unstuck_cooldown.start()

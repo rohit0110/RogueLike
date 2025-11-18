@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://d2h4yf8j5d665"]
 
 [ext_resource type="PackedScene" uid="uid://xt236ukuaf8g" path="res://Scenes/Player/player_alt.tscn" id="4_nk5xi"]
-[ext_resource type="Texture2D" uid="uid://bq7d8a3h48p1r" path="res://Assets/Level Designs/Ground_tiles_base.png" id="5_5sf7f"]
+[ext_resource type="Texture2D" uid="uid://des1omiae8kyu" path="res://Assets/LevelDesigns/Ground_tiles_base.png" id="5_5sf7f"]
 [ext_resource type="PackedScene" uid="uid://da7urblf8fisc" path="res://Scenes/Enemy/enemy.tscn" id="6_w0lsm"]
 [ext_resource type="PackedScene" uid="uid://bqaa7rsmwq6nj" path="res://Scenes/EnemyFlyingBat/enemy_flying_bat.tscn" id="7_tpkgp"]
 

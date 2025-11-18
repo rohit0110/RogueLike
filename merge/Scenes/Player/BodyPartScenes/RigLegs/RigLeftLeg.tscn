@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://de1wo850vs1xe"]
 
-[ext_resource type="Script" uid="uid://ck28elgc71p3s" path="res://Scenes/Player/Body Part Scenes/RigLegs/rig_left_leg.gd" id="1_qrifa"]
-[ext_resource type="Texture2D" uid="uid://htirpcvh6pvj" path="res://Assets/CharacterPNGs/Body Parts/Legs/toechondria_left_leg_spritesheet.png" id="1_xdc2s"]
+[ext_resource type="Script" uid="uid://ck28elgc71p3s" path="res://Scenes/Player/BodyPartScenes/RigLegs/rig_left_leg.gd" id="1_qrifa"]
+[ext_resource type="Texture2D" uid="uid://htirpcvh6pvj" path="res://Assets/CharacterPNGs/BodyParts/Legs/toechondria_left_leg_spritesheet.png" id="1_xdc2s"]
 
 [sub_resource type="Animation" id="Animation_r34lo"]
 length = 0.001

@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var animation_tree : AnimationTree
+@export var damage : int = 1
 var playback: AnimationNodeStateMachinePlayback
 var attack_state : bool = false
 signal shoot(pos, direction)
@@ -62,4 +63,5 @@ func _on_shoot(angle_to_turn: float, direction: Variant) -> void:
 	if direction < 0:
 		angle_to_turn = PI - angle_to_turn
 	bullet.direction = Vector2.RIGHT.rotated(angle_to_turn)
+	bullet.damage = damage  # Pass damage value to projectile
 	get_tree().current_scene.add_child(bullet)

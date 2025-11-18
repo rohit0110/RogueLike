@@ -30,13 +30,13 @@ var is_jumping := false
 func _ready() -> void:
 	add_to_group("player")
 	InputMap.load_from_project_settings()
-	swap_left_arm("res://Scenes/Player/Body Part Scenes/RigArms/RigLeftArm.tscn")
-	swap_right_arm("res://Scenes/Player/Body Part Scenes/RigArms/RigRightArm.tscn")
-	swap_left_leg("res://Scenes/Player/Body Part Scenes/RigLegs/RigLeftLeg.tscn")
-	swap_torso("res://Scenes/Player/Body Part Scenes/RigTorso/RigTorso.tscn")
-	swap_right_leg("res://Scenes/Player/Body Part Scenes/RigLegs/RigRightLeg.tscn")
-	
-	var head_scene = load("res://Scenes/Player/Body Part Scenes/RigHead/RigHead.tscn")
+	swap_left_arm("res://Scenes/Player/BodyPartScenes/RigArms/RigLeftArm.tscn")
+	swap_right_arm("res://Scenes/Player/BodyPartScenes/RigArms/RigRightArm.tscn")
+	swap_left_leg("res://Scenes/Player/BodyPartScenes/RigLegs/RigLeftLeg.tscn")
+	swap_torso("res://Scenes/Player/BodyPartScenes/RigTorso/RigTorso.tscn")
+	swap_right_leg("res://Scenes/Player/BodyPartScenes/RigLegs/RigRightLeg.tscn")
+
+	var head_scene = load("res://Scenes/Player/BodyPartScenes/RigHead/RigHead.tscn")
 	var head_instance = head_scene.instantiate()
 	_disable_jump_loop(head_instance)
 	head_slot.add_child(head_instance)
@@ -120,14 +120,19 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_force
 		is_jumping = true
 
-	# Attacking
-	if Input.is_action_just_pressed("attack"):
-		# Assuming right arm attacks for now. Can be made more complex.
+	# Attacking - Mouse buttons
+	# Mouse 1 (left click) - Left arm attack
+	if Input.is_action_just_pressed("attack_left"):
+		if current_left_arm and current_left_arm.has_method("trigger_attack"):
+			current_left_arm.trigger_attack()
+
+	# Mouse 2 (right click) - Right arm attack
+	if Input.is_action_just_pressed("attack_right"):
 		if current_right_arm and current_right_arm.has_method("trigger_attack"):
 			current_right_arm.trigger_attack()
 	
 	if Input.is_action_just_pressed("change_arm"):
-		swap_left_arm("res://Scenes/Player/Body Part Scenes/Arms/test_arm.tscn")
+		swap_left_arm("res://Scenes/Player/BodyPartScenes/Arms/test_arm.tscn")
 
 	move_and_slide()
 

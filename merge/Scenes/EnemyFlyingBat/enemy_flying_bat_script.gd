@@ -17,6 +17,7 @@ var player_is_visible: bool = false
 var player: CharacterBody2D = null
 var random_direction: Vector2 = Vector2.ZERO
 var target_position: Vector2 = Vector2.ZERO
+var is_knocked_back: bool = false
 
 # Node references
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -40,6 +41,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Skip normal AI if knocked back
+	if is_knocked_back:
+		move_and_slide()
+		update_animation()
+		return
+
 	# --- Global State Transitions ---
 	var was_visible = player_is_visible
 	player_is_visible = _is_player_in_los()
@@ -64,7 +71,7 @@ func _physics_process(delta: float) -> void:
 			_dive_state()
 		State.RETURN:
 			_return_state()
-	
+
 	move_and_slide()
 	update_animation()
 
@@ -141,3 +148,28 @@ func update_animation() -> void:
 	animated_sprite.play("fly")
 	if abs(velocity.x) > 0.1:
 		animated_sprite.flip_h = velocity.x < 0
+
+func take_damage(amount: int, knockback_direction: Vector2) -> void:
+	# Apply damage to health bar
+	healthbar.health -= amount
+
+	# Apply knockback (flying enemies are pushed back more dramatically)
+	var knockback_force = 300.0
+	velocity = knockback_direction.normalized() * knockback_force
+
+	# Set knockback flag to prevent AI from overriding velocity
+	is_knocked_back = true
+
+	# Interrupt current action - reset to wander state
+	current_state = State.WANDER
+	chase_timer.stop()
+	attack_timer.stop()
+	dive_timer.stop()
+
+	# Reset knockback flag after short duration
+	await get_tree().create_timer(0.3).timeout
+	is_knocked_back = false
+
+	# Restart wander behavior
+	direction_timer.wait_time = randf_range(1.0, 2.5)
+	direction_timer.start()

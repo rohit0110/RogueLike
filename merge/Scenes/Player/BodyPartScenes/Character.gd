@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var current_arm := preload("res://Scenes/Player/Body Part Scenes/Arms/test_arm.tscn").instantiate()
+var current_arm := preload("res://Scenes/Player/BodyPartScenes/Arms/test_arm.tscn").instantiate()
 
 func _physics_process(delta: float) -> void:
 	# input
